@@ -170,11 +170,7 @@ paths:
       - "application/json"
       produces:
       - "application/json"
-      parameters:
-      - name: "orgId"
-        in: "path"
-        required: true
-        type: "string"
+      parameters: []
       responses:
         200:
           description: "IP Allowlists retrieved successfully"
@@ -1791,9 +1787,6 @@ definitions:
         description: "list of field schemas "
         items:
           $ref: "#/definitions/FieldSchema"
-      inverted_index_group_encoding_options:
-        description: "inverted index group encoding options "
-        $ref: "#/definitions/InvertedIndexGroupEncodingOptions"
   CollectionStats:
     type: "object"
     properties:
