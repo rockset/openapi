@@ -843,18 +843,10 @@ paths:
           description: "workspace deleted successfully"
           schema:
             $ref: "#/definitions/DeleteWorkspaceResponse"
-        400:
-          description: "bad request"
-        401:
-          description: "unauthorized"
-        403:
-          description: "permission denied"
-        404:
-          description: "workspace not found"
-        405:
-          description: "not allowed"
-        413:
-          description: "limit reached"
+        default:
+          description: "Unexpected Error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/aliases:
     get:
       tags:
