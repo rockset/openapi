@@ -43,6 +43,18 @@ paths:
           description: "organization retrieved successfully"
           schema:
             $ref: "#/definitions/OrganizationResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/aliases:
     get:
       tags:
@@ -60,6 +72,18 @@ paths:
           description: "aliases retrieved successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/collections:
     get:
       tags:
@@ -77,6 +101,18 @@ paths:
           description: "collections retrieved successfully"
           schema:
             $ref: "#/definitions/ListCollectionsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/integrations:
     get:
       tags:
@@ -94,6 +130,18 @@ paths:
           description: "integrations retrieved successfully"
           schema:
             $ref: "#/definitions/ListIntegrationsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Integrations"
@@ -116,6 +164,18 @@ paths:
           description: "integration created successfully"
           schema:
             $ref: "#/definitions/CreateIntegrationResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/integrations/{integration}:
     get:
       tags:
@@ -138,6 +198,18 @@ paths:
           description: "integration retrieved successfully"
           schema:
             $ref: "#/definitions/GetIntegrationResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Integrations"
@@ -159,6 +231,18 @@ paths:
           description: "integration deleted successfully"
           schema:
             $ref: "#/definitions/DeleteIntegrationResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ip/allowlist:
     get:
       tags:
@@ -176,6 +260,18 @@ paths:
           description: "IP Allowlists retrieved successfully"
           schema:
             $ref: "#/definitions/ListIpAllowlistsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "IP Allowlist"
@@ -198,6 +294,18 @@ paths:
           description: "IP Allowlist network policy created successfully"
           schema:
             $ref: "#/definitions/CreateIpAllowlistResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ip/allowlist/{name}:
     get:
       tags:
@@ -220,6 +328,18 @@ paths:
           description: "IP Allowlist network policy retrieved successfully"
           schema:
             $ref: "#/definitions/GetIpAllowlistResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "IP Allowlist"
@@ -241,6 +361,18 @@ paths:
           description: "IP Allowlist network policy deleted successfully"
           schema:
             $ref: "#/definitions/DeleteIpAllowlistResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/lambdas:
     get:
       tags:
@@ -258,6 +390,18 @@ paths:
           description: "Query Lambdas listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/lambdas/tags:
     get:
       tags:
@@ -275,6 +419,18 @@ paths:
           description: "tags listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaTagsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/lambdas/tags/{tag}:
     get:
       tags:
@@ -297,6 +453,18 @@ paths:
           description: "versions listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/queries:
     post:
       tags:
@@ -320,6 +488,18 @@ paths:
           description: "query executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/queries/validations:
     post:
       tags:
@@ -347,6 +527,18 @@ paths:
           description: "query validated successfully"
           schema:
             $ref: "#/definitions/ValidateQueryResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users:
     get:
       tags:
@@ -364,6 +556,18 @@ paths:
           description: "users retrieved successfully"
           schema:
             $ref: "#/definitions/ListUsersResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Users"
@@ -386,6 +590,18 @@ paths:
           description: "user created successfully"
           schema:
             $ref: "#/definitions/CreateUserResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/self:
     get:
       tags:
@@ -403,6 +619,18 @@ paths:
           description: "user retrieved successfully"
           schema:
             $ref: "#/definitions/User"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/self/apikeys:
     get:
       tags:
@@ -420,6 +648,18 @@ paths:
           description: "API keys retrieved successfully"
           schema:
             $ref: "#/definitions/ListApiKeysResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "API Keys"
@@ -442,6 +682,18 @@ paths:
           description: "API key created successfully"
           schema:
             $ref: "#/definitions/CreateApiKeyResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/self/apikeys/{name}:
     delete:
       tags:
@@ -464,6 +716,18 @@ paths:
           description: "API key deleted successfully"
           schema:
             $ref: "#/definitions/DeleteApiKeyResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/{user}:
     delete:
       tags:
@@ -486,6 +750,18 @@ paths:
           description: "user deleted successfully"
           schema:
             $ref: "#/definitions/DeleteUserResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/{user}/apikeys:
     get:
       tags:
@@ -509,6 +785,18 @@ paths:
           description: "API keys retrieved successfully"
           schema:
             $ref: "#/definitions/ListApiKeysResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "API Keys"
@@ -537,6 +825,18 @@ paths:
           description: "API key created successfully"
           schema:
             $ref: "#/definitions/CreateApiKeyResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/users/{user}/apikeys/{name}:
     delete:
       tags:
@@ -565,6 +865,18 @@ paths:
           description: "API key deleted successfully"
           schema:
             $ref: "#/definitions/DeleteApiKeyResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/virtualinstances:
     get:
       tags:
@@ -582,6 +894,18 @@ paths:
           description: "virtual instances retrieved successfully"
           schema:
             $ref: "#/definitions/ListVirtualInstancesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/virtualinstances/{virtualInstanceId}:
     get:
       tags:
@@ -604,6 +928,18 @@ paths:
           description: "virtual instance retrieved successfully"
           schema:
             $ref: "#/definitions/GetVirtualInstanceResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Virtual Instances"
@@ -631,6 +967,18 @@ paths:
           description: "virtual instance updated successfully"
           schema:
             $ref: "#/definitions/UpdateVirtualInstanceResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws:
     get:
       tags:
@@ -648,6 +996,18 @@ paths:
           description: "workspaces retrieved successfully"
           schema:
             $ref: "#/definitions/ListWorkspacesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Workspaces"
@@ -670,6 +1030,18 @@ paths:
           description: "workspace created successfully"
           schema:
             $ref: "#/definitions/CreateWorkspaceResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}:
     get:
       tags:
@@ -693,6 +1065,18 @@ paths:
           description: "workspace retrieved successfully"
           schema:
             $ref: "#/definitions/GetWorkspaceResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Workspaces"
@@ -715,6 +1099,18 @@ paths:
           description: "workspace deleted successfully"
           schema:
             $ref: "#/definitions/DeleteWorkspaceResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "workspace not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/aliases:
     get:
       tags:
@@ -738,6 +1134,18 @@ paths:
           description: "aliases retrieved successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Aliases"
@@ -766,6 +1174,18 @@ paths:
           description: "alias created successfully"
           schema:
             $ref: "#/definitions/CreateAliasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/aliases/{alias}:
     get:
       tags:
@@ -794,6 +1214,18 @@ paths:
           description: "alias retrieved successfully"
           schema:
             $ref: "#/definitions/GetAliasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Aliases"
@@ -827,6 +1259,18 @@ paths:
           description: "alias updated successfully"
           schema:
             $ref: "#/definitions/GetAliasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Aliases"
@@ -854,6 +1298,18 @@ paths:
           description: "alias deleted successfully"
           schema:
             $ref: "#/definitions/DeleteAliasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/aliases/{alias}/lambdas:
     get:
       tags:
@@ -879,6 +1335,18 @@ paths:
           description: "Query Lambdas fetched successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/collections:
     get:
       tags:
@@ -902,6 +1370,18 @@ paths:
           description: "collections retrieved successfully"
           schema:
             $ref: "#/definitions/ListCollectionsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Collections"
@@ -930,6 +1410,18 @@ paths:
           description: "collection created successfully"
           schema:
             $ref: "#/definitions/CreateCollectionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/collections/{collection}:
     get:
       tags:
@@ -958,6 +1450,18 @@ paths:
           description: "collection retrieved successfully"
           schema:
             $ref: "#/definitions/GetCollectionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Collections"
@@ -985,6 +1489,18 @@ paths:
           description: "collection deleted successfully"
           schema:
             $ref: "#/definitions/DeleteCollectionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/aliases:
     get:
       tags:
@@ -1010,6 +1526,18 @@ paths:
           description: "Aliases fetched successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/docs:
     post:
       tags:
@@ -1044,6 +1572,18 @@ paths:
           description: "documents added successfully"
           schema:
             $ref: "#/definitions/AddDocumentsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Documents"
@@ -1077,6 +1617,18 @@ paths:
           description: "documents deleted successfully"
           schema:
             $ref: "#/definitions/DeleteDocumentsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     patch:
       tags:
       - "Documents"
@@ -1110,6 +1662,18 @@ paths:
           description: "Documents patched successfully"
           schema:
             $ref: "#/definitions/PatchDocumentsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/lambdas:
     get:
       tags:
@@ -1138,6 +1702,18 @@ paths:
           description: "Query Lambdas fetched successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas:
     get:
       tags:
@@ -1161,6 +1737,18 @@ paths:
           description: "Query Lambdas listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdasResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Query Lambdas"
@@ -1189,6 +1777,18 @@ paths:
           description: "Query Lambda created successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}:
     delete:
       tags:
@@ -1217,6 +1817,18 @@ paths:
           description: "Query Lambda deleted successfully"
           schema:
             $ref: "#/definitions/DeleteQueryLambdaResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/tags:
     get:
       tags:
@@ -1245,6 +1857,18 @@ paths:
           description: "tags listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaTagsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Query Lambdas"
@@ -1279,6 +1903,18 @@ paths:
           description: "tag created successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/tags/{tag}:
     get:
       tags:
@@ -1312,6 +1948,18 @@ paths:
           description: "version retrieved successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Query Lambdas"
@@ -1350,6 +1998,18 @@ paths:
           description: "Query Lambda executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     delete:
       tags:
       - "Query Lambdas"
@@ -1382,6 +2042,18 @@ paths:
           description: "tag deleted successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/version/{version}:
     delete:
       tags:
@@ -1415,6 +2087,18 @@ paths:
           description: "Query Lambda version deleted successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/versions:
     get:
       tags:
@@ -1443,6 +2127,18 @@ paths:
           description: "versions listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Query Lambdas"
@@ -1480,6 +2176,18 @@ paths:
           description: "Query Lambda updated successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/versions/{version}:
     get:
       tags:
@@ -1513,6 +2221,18 @@ paths:
           description: "Query Lambda retrieved successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
     post:
       tags:
       - "Query Lambdas"
@@ -1551,6 +2271,18 @@ paths:
           description: "Query Lambda executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
   /v1/orgs/self/ws/{workspace}/ws:
     get:
       tags:
@@ -1574,6 +2306,18 @@ paths:
           description: "workspaces retrieved successfully"
           schema:
             $ref: "#/definitions/ListWorkspacesResponse"
+        400:
+          description: "bad request"
+        401:
+          description: "unauthorized"
+        403:
+          description: "permission denied"
+        404:
+          description: "not found"
+        405:
+          description: "not allowed"
+        413:
+          description: "limit reached"
 definitions:
   AddDocumentsRequest:
     type: "object"
