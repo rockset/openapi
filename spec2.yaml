@@ -43,6 +43,58 @@ paths:
           description: "organization retrieved successfully"
           schema:
             $ref: "#/definitions/OrganizationResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/aliases:
     get:
       tags:
@@ -60,6 +112,58 @@ paths:
           description: "aliases retrieved successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/collections:
     get:
       tags:
@@ -77,6 +181,58 @@ paths:
           description: "collections retrieved successfully"
           schema:
             $ref: "#/definitions/ListCollectionsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/integrations:
     get:
       tags:
@@ -94,6 +250,58 @@ paths:
           description: "integrations retrieved successfully"
           schema:
             $ref: "#/definitions/ListIntegrationsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Integrations"
@@ -116,6 +324,58 @@ paths:
           description: "integration created successfully"
           schema:
             $ref: "#/definitions/CreateIntegrationResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/integrations/{integration}:
     get:
       tags:
@@ -138,6 +398,58 @@ paths:
           description: "integration retrieved successfully"
           schema:
             $ref: "#/definitions/GetIntegrationResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Integrations"
@@ -159,6 +471,58 @@ paths:
           description: "integration deleted successfully"
           schema:
             $ref: "#/definitions/DeleteIntegrationResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ip/allowlist:
     get:
       tags:
@@ -176,6 +540,58 @@ paths:
           description: "IP Allowlists retrieved successfully"
           schema:
             $ref: "#/definitions/ListIpAllowlistsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "IP Allowlist"
@@ -198,6 +614,58 @@ paths:
           description: "IP Allowlist network policy created successfully"
           schema:
             $ref: "#/definitions/CreateIpAllowlistResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ip/allowlist/{name}:
     get:
       tags:
@@ -220,6 +688,58 @@ paths:
           description: "IP Allowlist network policy retrieved successfully"
           schema:
             $ref: "#/definitions/GetIpAllowlistResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "IP Allowlist"
@@ -241,6 +761,58 @@ paths:
           description: "IP Allowlist network policy deleted successfully"
           schema:
             $ref: "#/definitions/DeleteIpAllowlistResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/lambdas:
     get:
       tags:
@@ -258,6 +830,58 @@ paths:
           description: "Query Lambdas listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/lambdas/tags:
     get:
       tags:
@@ -275,6 +899,58 @@ paths:
           description: "tags listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaTagsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/lambdas/tags/{tag}:
     get:
       tags:
@@ -297,6 +973,58 @@ paths:
           description: "versions listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/queries:
     post:
       tags:
@@ -320,6 +1048,58 @@ paths:
           description: "query executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/queries/validations:
     post:
       tags:
@@ -347,6 +1127,58 @@ paths:
           description: "query validated successfully"
           schema:
             $ref: "#/definitions/ValidateQueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users:
     get:
       tags:
@@ -364,6 +1196,58 @@ paths:
           description: "users retrieved successfully"
           schema:
             $ref: "#/definitions/ListUsersResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Users"
@@ -386,6 +1270,58 @@ paths:
           description: "user created successfully"
           schema:
             $ref: "#/definitions/CreateUserResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/self:
     get:
       tags:
@@ -403,6 +1339,58 @@ paths:
           description: "user retrieved successfully"
           schema:
             $ref: "#/definitions/User"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/self/apikeys:
     get:
       tags:
@@ -420,6 +1408,58 @@ paths:
           description: "API keys retrieved successfully"
           schema:
             $ref: "#/definitions/ListApiKeysResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "API Keys"
@@ -442,6 +1482,58 @@ paths:
           description: "API key created successfully"
           schema:
             $ref: "#/definitions/CreateApiKeyResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/self/apikeys/{name}:
     delete:
       tags:
@@ -464,6 +1556,58 @@ paths:
           description: "API key deleted successfully"
           schema:
             $ref: "#/definitions/DeleteApiKeyResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/{user}:
     delete:
       tags:
@@ -486,6 +1630,58 @@ paths:
           description: "user deleted successfully"
           schema:
             $ref: "#/definitions/DeleteUserResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/{user}/apikeys:
     get:
       tags:
@@ -509,6 +1705,58 @@ paths:
           description: "API keys retrieved successfully"
           schema:
             $ref: "#/definitions/ListApiKeysResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "API Keys"
@@ -537,6 +1785,58 @@ paths:
           description: "API key created successfully"
           schema:
             $ref: "#/definitions/CreateApiKeyResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/{user}/apikeys/{name}:
     delete:
       tags:
@@ -565,6 +1865,58 @@ paths:
           description: "API key deleted successfully"
           schema:
             $ref: "#/definitions/DeleteApiKeyResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/virtualinstances:
     get:
       tags:
@@ -582,6 +1934,58 @@ paths:
           description: "virtual instances retrieved successfully"
           schema:
             $ref: "#/definitions/ListVirtualInstancesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/virtualinstances/{virtualInstanceId}:
     get:
       tags:
@@ -604,11 +2008,63 @@ paths:
           description: "virtual instance retrieved successfully"
           schema:
             $ref: "#/definitions/GetVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Virtual Instances"
       summary: "Update Virtual Instance"
-      description: "Update the size of a virtual instance."
+      description: "Update the properties of a virtual instance."
       operationId: "setVirtualInstance"
       consumes:
       - "application/json"
@@ -631,6 +2087,58 @@ paths:
           description: "virtual instance updated successfully"
           schema:
             $ref: "#/definitions/UpdateVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws:
     get:
       tags:
@@ -648,6 +2156,58 @@ paths:
           description: "workspaces retrieved successfully"
           schema:
             $ref: "#/definitions/ListWorkspacesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Workspaces"
@@ -670,6 +2230,58 @@ paths:
           description: "workspace created successfully"
           schema:
             $ref: "#/definitions/CreateWorkspaceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}:
     get:
       tags:
@@ -693,6 +2305,58 @@ paths:
           description: "workspace retrieved successfully"
           schema:
             $ref: "#/definitions/GetWorkspaceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Workspaces"
@@ -715,6 +2379,58 @@ paths:
           description: "workspace deleted successfully"
           schema:
             $ref: "#/definitions/DeleteWorkspaceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/aliases:
     get:
       tags:
@@ -738,6 +2454,58 @@ paths:
           description: "aliases retrieved successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Aliases"
@@ -766,6 +2534,58 @@ paths:
           description: "alias created successfully"
           schema:
             $ref: "#/definitions/CreateAliasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/aliases/{alias}:
     get:
       tags:
@@ -794,6 +2614,58 @@ paths:
           description: "alias retrieved successfully"
           schema:
             $ref: "#/definitions/GetAliasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Aliases"
@@ -902,6 +2774,58 @@ paths:
           description: "collections retrieved successfully"
           schema:
             $ref: "#/definitions/ListCollectionsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Collections"
@@ -930,6 +2854,58 @@ paths:
           description: "collection created successfully"
           schema:
             $ref: "#/definitions/CreateCollectionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}:
     get:
       tags:
@@ -958,6 +2934,58 @@ paths:
           description: "collection retrieved successfully"
           schema:
             $ref: "#/definitions/GetCollectionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Collections"
@@ -985,6 +3013,58 @@ paths:
           description: "collection deleted successfully"
           schema:
             $ref: "#/definitions/DeleteCollectionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/aliases:
     get:
       tags:
@@ -1010,6 +3090,58 @@ paths:
           description: "Aliases fetched successfully"
           schema:
             $ref: "#/definitions/ListAliasesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/docs:
     post:
       tags:
@@ -1044,6 +3176,58 @@ paths:
           description: "documents added successfully"
           schema:
             $ref: "#/definitions/AddDocumentsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Documents"
@@ -1077,6 +3261,58 @@ paths:
           description: "documents deleted successfully"
           schema:
             $ref: "#/definitions/DeleteDocumentsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     patch:
       tags:
       - "Documents"
@@ -1110,6 +3346,58 @@ paths:
           description: "Documents patched successfully"
           schema:
             $ref: "#/definitions/PatchDocumentsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/lambdas:
     get:
       tags:
@@ -1138,6 +3426,58 @@ paths:
           description: "Query Lambdas fetched successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas:
     get:
       tags:
@@ -1161,6 +3501,58 @@ paths:
           description: "Query Lambdas listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Query Lambdas"
@@ -1189,6 +3581,58 @@ paths:
           description: "Query Lambda created successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}:
     delete:
       tags:
@@ -1217,6 +3661,58 @@ paths:
           description: "Query Lambda deleted successfully"
           schema:
             $ref: "#/definitions/DeleteQueryLambdaResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/tags:
     get:
       tags:
@@ -1245,6 +3741,58 @@ paths:
           description: "tags listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaTagsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Query Lambdas"
@@ -1279,6 +3827,58 @@ paths:
           description: "tag created successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/tags/{tag}:
     get:
       tags:
@@ -1312,6 +3912,58 @@ paths:
           description: "version retrieved successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Query Lambdas"
@@ -1350,6 +4002,58 @@ paths:
           description: "Query Lambda executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Query Lambdas"
@@ -1382,6 +4086,58 @@ paths:
           description: "tag deleted successfully"
           schema:
             $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/version/{version}:
     delete:
       tags:
@@ -1415,6 +4171,58 @@ paths:
           description: "Query Lambda version deleted successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/versions:
     get:
       tags:
@@ -1443,6 +4251,58 @@ paths:
           description: "versions listed successfully"
           schema:
             $ref: "#/definitions/ListQueryLambdaVersionsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Query Lambdas"
@@ -1480,6 +4340,58 @@ paths:
           description: "Query Lambda updated successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/versions/{version}:
     get:
       tags:
@@ -1513,6 +4425,58 @@ paths:
           description: "Query Lambda retrieved successfully"
           schema:
             $ref: "#/definitions/QueryLambdaVersionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Query Lambdas"
@@ -1551,6 +4515,58 @@ paths:
           description: "Query Lambda executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/ws:
     get:
       tags:
@@ -1574,6 +4590,58 @@ paths:
           description: "workspaces retrieved successfully"
           schema:
             $ref: "#/definitions/ListWorkspacesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
 definitions:
   AddDocumentsRequest:
     type: "object"
@@ -1750,6 +4818,7 @@ definitions:
         - "DELETED"
         - "PAUSING"
         - "RESUMING"
+        - "PREPARING_BULK"
         - "BULK_INGEST_MODE"
         - "EXITING_BULK_INGEST_MODE"
         - "UNKNOWN"
@@ -1772,9 +4841,9 @@ definitions:
         description: "list of mappings applied on all documents in a collection"
         items:
           $ref: "#/definitions/FieldMappingV2"
-      field_partitions:
+      clustering_key:
         type: "array"
-        description: "list of partitions for a collection"
+        description: "list of clustering fields for a collection"
         items:
           $ref: "#/definitions/FieldPartition"
       aliases:
@@ -1787,6 +4856,13 @@ definitions:
         description: "list of field schemas "
         items:
           $ref: "#/definitions/FieldSchema"
+      inverted_index_group_encoding_options:
+        description: "inverted index group encoding options"
+        $ref: "#/definitions/InvertedIndexGroupEncodingOptions"
+      fieldPartitions:
+        type: "array"
+        items:
+          $ref: "#/definitions/FieldPartition"
   CollectionStats:
     type: "object"
     properties:
@@ -1935,9 +5011,9 @@ definitions:
         description: "list of mappings"
         items:
           $ref: "#/definitions/FieldMappingV2"
-      field_partitions:
+      clustering_key:
         type: "array"
-        description: "list of field partitions"
+        description: "list of clustering fields"
         items:
           $ref: "#/definitions/FieldPartition"
       field_schemas:
@@ -3642,8 +6718,6 @@ definitions:
         $ref: "#/definitions/QueryLambdaSql"
   UpdateVirtualInstanceRequest:
     type: "object"
-    required:
-    - "new_size"
     properties:
       new_size:
         type: "string"
@@ -3673,6 +6747,8 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
+      monitoring_enabled:
+        type: "boolean"
   UpdateVirtualInstanceResponse:
     type: "object"
     properties:
@@ -3822,6 +6898,18 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
+      last_updated:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when virtual instance size was last updated"
+      estimated_switch_duration_minutes:
+        type: "integer"
+        format: "int64"
+        example: 20
+        description: "estimated duration in minutes of last virtual instance size\
+          \ update"
+      monitoring_enabled:
+        type: "boolean"
       default_pod_count:
         type: "integer"
         format: "int32"
