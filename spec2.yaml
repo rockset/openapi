@@ -1535,6 +1535,79 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/users/self/apikeys/{name}:
+    get:
+      tags:
+      - "API Keys"
+      summary: "Get API Key"
+      description: "Get a particular API key for the authenticated user."
+      operationId: "getApiKey"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "name"
+        in: "path"
+        description: "name of the API key"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "API key retrieved successfully"
+          schema:
+            $ref: "#/definitions/GetApiKeyResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "API Keys"
@@ -1757,34 +1830,33 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
-    post:
+  /v1/orgs/self/users/{user}/apikeys/{name}:
+    get:
       tags:
       - "API Keys"
-      summary: "Create API Key (any user)"
-      description: "Create a new API key for any user in your organization. Accessible\
-        \ to Admin users only."
-      operationId: "createApiKeyAdmin"
+      summary: "Get any API Key"
+      description: "Get a particular API key for any user."
+      operationId: "getApiKeyAdmin"
       consumes:
       - "application/json"
       produces:
       - "application/json"
       parameters:
-      - in: "body"
-        name: "body"
-        description: "JSON object"
-        required: true
-        schema:
-          $ref: "#/definitions/CreateApiKeyRequest"
       - name: "user"
         in: "path"
-        description: "user email"
+        description: "email of the api key owner"
+        required: true
+        type: "string"
+      - name: "name"
+        in: "path"
+        description: "name of the API key"
         required: true
         type: "string"
       responses:
         200:
-          description: "API key created successfully"
+          description: "API key retrieved successfully"
           schema:
-            $ref: "#/definitions/CreateApiKeyResponse"
+            $ref: "#/definitions/GetApiKeyResponse"
         400:
           description: "bad request"
           schema:
@@ -1837,7 +1909,6 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
-  /v1/orgs/self/users/{user}/apikeys/{name}:
     delete:
       tags:
       - "API Keys"
@@ -4718,11 +4789,13 @@ definitions:
       key:
         type: "string"
         example: "aB35kDjg93J5nsf4GjwMeErAVd832F7ad4vhsW1S02kfZiab42sTsfW5Sxt25asT"
-        description: "string of 64 alphanumeric characters"
+        description: "string of 64 alphanumeric characters."
       last_access_time:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "ISO-8601 date"
+      role:
+        type: "string"
       created_by:
         type: "string"
     description: "API keys are used to authenticate requests to Rockset's API. An\
@@ -4972,6 +5045,8 @@ definitions:
         type: "string"
         example: "event-logger"
         description: "descriptive label"
+      role:
+        type: "string"
   CreateApiKeyResponse:
     type: "object"
     properties:
@@ -5003,6 +5078,11 @@ definitions:
         example: 1000000
         description: "number of seconds after which data is purged, based on event\
           \ time"
+      time_partition_resolution_secs:
+        type: "integer"
+        format: "int64"
+        description: "If non-null, the collection will be time partition and each\
+          \ partition will be time_partition_resolution_secs wide."
       event_time_info:
         description: "configuration for event data"
         $ref: "#/definitions/EventTimeInfo"
@@ -5329,6 +5409,8 @@ definitions:
       aws_role:
         description: "role used for external id type authentication"
         $ref: "#/definitions/AwsRole"
+      s3_export_bucket_name:
+        type: "string"
   ErrorModel:
     type: "object"
     properties:
@@ -5516,6 +5598,10 @@ definitions:
         $ref: "#/definitions/CsvParams"
       xml:
         $ref: "#/definitions/XmlParams"
+      mysql_dms:
+        type: "boolean"
+      postgres_dms:
+        type: "boolean"
   GcpServiceAccount:
     type: "object"
     required:
@@ -5536,6 +5622,12 @@ definitions:
       data:
         description: "alias that was requested"
         $ref: "#/definitions/Alias"
+  GetApiKeyResponse:
+    type: "object"
+    properties:
+      data:
+        description: "A selected API key object"
+        $ref: "#/definitions/ApiKey"
   GetCollectionResponse:
     type: "object"
     properties:
@@ -6393,6 +6485,15 @@ definitions:
         type: "string"
         example: "prefix/to/keys"
         description: "Prefix that selects keys to ingest."
+      object_count_downloaded:
+        type: "integer"
+        format: "int64"
+      object_count_total:
+        type: "integer"
+        format: "int64"
+      object_bytes_total:
+        type: "integer"
+        format: "int64"
   SourceKafka:
     type: "object"
     required:
@@ -6411,14 +6512,19 @@ definitions:
     required:
     - "stream_name"
     properties:
-      stream_name:
-        type: "string"
-        example: "click_stream"
-        description: "name of kinesis stream"
       aws_region:
         type: "string"
         example: "us-east-2"
         description: "AWS region name of Kinesis stream, by default us-west-2 is used"
+      stream_name:
+        type: "string"
+        example: "click_stream"
+        description: "name of kinesis stream"
+      dms_primary_key:
+        type: "array"
+        description: "set of fields that correspond to a DMS primary key"
+        items:
+          type: "string"
   SourceMongoDb:
     type: "object"
     required:
@@ -6510,6 +6616,15 @@ definitions:
         description: "custom transformation on data field"
         items:
           $ref: "#/definitions/FieldMask"
+      object_count_downloaded:
+        type: "integer"
+        format: "int64"
+      object_count_total:
+        type: "integer"
+        format: "int64"
+      object_bytes_total:
+        type: "integer"
+        format: "int64"
   SqlExpression:
     type: "object"
     properties:
@@ -6531,10 +6646,6 @@ definitions:
         - "PROCESSING"
         - "COMPLETED"
         - "ERROR"
-      since:
-        type: "string"
-        example: "2019-01-15T21:48:23Z"
-        description: "ISO-8601 date when state was triggered"
       message:
         type: "string"
         example: "error 403 forbidden"
@@ -6552,23 +6663,6 @@ definitions:
         format: "int64"
         example: 32849023
         description: "Total items processed of source"
-      last_error_at:
-        type: "string"
-        example: "2019-01-15T21:48:23Z"
-        description: "ISO-8601 date when last error occurred"
-      last_error_item:
-        type: "string"
-        example: "/path/to/some/object"
-        description: "last source item that errored"
-      last_error_reason:
-        type: "string"
-        example: "invalid format .docx"
-        description: "reason for the last error"
-      total_error_items:
-        type: "integer"
-        format: "int64"
-        example: 32849023
-        description: "Total items that errored"
   StatusDynamoDb:
     type: "object"
     properties:
