@@ -4835,6 +4835,36 @@ definitions:
         type: "string"
         example: "arn:aws:iam::2378964092:role/rockset-role"
         description: "ARN of rockset-role created in your account"
+  Cluster:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: "asdf98-as9df8adf-adsf9asfd"
+        description: "unique identifier for the cluster"
+      cluster_type:
+        type: "string"
+        example: "PRIVATE"
+        description: "cluster type"
+        enum:
+        - "PUBLIC"
+        - "PRIVATE"
+      aws_region:
+        type: "string"
+        example: "us-west-2"
+        description: "aws region"
+      domain:
+        type: "string"
+        example: "rockset"
+        description: "domain of org using cluster"
+      top_level_domain:
+        type: "string"
+        example: ".com"
+        description: "top level domain of org using cluster"
+      apiserver_url:
+        type: "string"
+        example: "api.rockset.us-west-2.rockset.com"
+        description: "api server url for cluster"
   Collection:
     type: "object"
     properties:
@@ -5955,6 +5985,20 @@ definitions:
     properties:
       deletionScheduledAt:
         type: "string"
+      rockset_user:
+        type: "string"
+        example: "<id>"
+        description: "Rockset's global AWS user"
+      external_id:
+        type: "string"
+        example: "<hash>"
+        description: "organization's unique external ID within Rockset"
+      clusters:
+        type: "array"
+        example: "[{ ... }]"
+        description: "list of clusters associated with this org"
+        items:
+          $ref: "#/definitions/Cluster"
       id:
         type: "string"
         example: "rockset"
@@ -6888,6 +6932,11 @@ definitions:
         format: "int64"
         example: 100
         description: "Latest offset of partition"
+      offset_lag:
+        type: "integer"
+        format: "int64"
+        example: 10
+        description: "Per partition lag for offset"
   StatusMongoDb:
     type: "object"
     properties:
