@@ -3968,6 +3968,90 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+    delete:
+      tags:
+      - "Query Lambdas"
+      summary: "Delete Query Lambda Tag Version"
+      description: "Delete a tag for a specific Query Lambda"
+      operationId: "deleteQueryLambdaTag"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "workspace"
+        in: "path"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - name: "queryLambda"
+        in: "path"
+        description: "name of the Query Lambda"
+        required: true
+        type: "string"
+      - name: "tag"
+        in: "path"
+        description: "name of the tag"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "tag deleted successfully"
+          schema:
+            $ref: "#/definitions/QueryLambdaTagResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/lambdas/{queryLambda}/version/{version}:
     delete:
       tags:
