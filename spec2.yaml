@@ -4919,6 +4919,29 @@ definitions:
         type: "string"
         example: "arn:aws:iam::2378964092:role/rockset-role"
         description: "ARN of rockset-role created in your account"
+  AzureBlobStorageIntegration:
+    type: "object"
+    required:
+    - "connection_string"
+    properties:
+      connection_string:
+        type: "string"
+        description: "credentials for Azure Blob Storage"
+  AzureEventHubsIntegration:
+    type: "object"
+    properties:
+      connection_string:
+        type: "string"
+        description: "azure event hubs connection string"
+        readOnly: true
+  AzureServiceBusIntegration:
+    type: "object"
+    required:
+    - "connection_string"
+    properties:
+      connection_string:
+        type: "string"
+        description: "credentials for the Azure Service Bus"
   Cluster:
     type: "object"
     properties:
@@ -5259,6 +5282,11 @@ definitions:
       gcs:
         description: "GCS details"
         $ref: "#/definitions/GcsIntegration"
+      azure_blob_storage:
+        description: "Azure Blob Storage details"
+        $ref: "#/definitions/AzureBlobStorageIntegration"
+      azure_event_hubs:
+        $ref: "#/definitions/AzureEventHubsIntegration"
       segment:
         $ref: "#/definitions/SegmentIntegration"
       kafka:
@@ -5597,6 +5625,9 @@ definitions:
       error_id:
         type: "string"
         description: "ID of the error"
+      query_id:
+        type: "string"
+        description: "ID of the query (if applicable)"
     description: "Describes details about an error"
   EventTimeInfo:
     type: "object"
@@ -5875,6 +5906,13 @@ definitions:
       gcs:
         description: "GCS details"
         $ref: "#/definitions/GcsIntegration"
+      azure_blob_storage:
+        description: "Azure Blob Storage details"
+        $ref: "#/definitions/AzureBlobStorageIntegration"
+      azure_service_bus:
+        $ref: "#/definitions/AzureServiceBusIntegration"
+      azure_event_hubs:
+        $ref: "#/definitions/AzureEventHubsIntegration"
       segment:
         description: "Segment details"
         $ref: "#/definitions/SegmentIntegration"
@@ -6519,6 +6557,10 @@ definitions:
           \ is specified in the query request."
         items:
           type: "string"
+      query_lambda_path:
+        type: "string"
+        description: "The full path of the executed query lambda. Includes version\
+          \ information."
       query_errors:
         type: "array"
         description: "Errors encountered while executing the query."
@@ -6655,6 +6697,12 @@ definitions:
       gcs:
         description: "configuration for ingestion from GCS"
         $ref: "#/definitions/SourceGcs"
+      azure_blob_storage:
+        $ref: "#/definitions/SourceAzureBlobStorage"
+      azure_service_bus:
+        $ref: "#/definitions/SourceAzureServiceBus"
+      azure_event_hubs:
+        $ref: "#/definitions/SourceAzureEventHubs"
       redshift:
         description: "configuration for ingestion from Redshift"
         $ref: "#/definitions/SourceRedshift"
@@ -6679,6 +6727,64 @@ definitions:
     description: "Details about the data source for the given collection. Only one\
       \ of the following fields are allowed to be defined. Only collections can act\
       \ as data sources for views. "
+  SourceAzureBlobStorage:
+    type: "object"
+    properties:
+      container:
+        type: "string"
+        example: "server-logs"
+        description: "name of Azure blob Storage container you want to ingest from"
+      prefix:
+        type: "string"
+        example: "prefix/to/blobs"
+        description: "Prefix that selects blobs to ingest."
+      pattern:
+        type: "string"
+        example: "prefix/to/**/keys/*.format"
+        description: "Glob-style pattern that selects keys to ingest. Only either\
+          \ prefix or pattern can be specified."
+      blob_count_downloaded:
+        type: "integer"
+        format: "int64"
+      blob_count_total:
+        type: "integer"
+        format: "int64"
+      blob_bytes_total:
+        type: "integer"
+        format: "int64"
+  SourceAzureEventHubs:
+    type: "object"
+    properties:
+      hub_id:
+        type: "string"
+        example: "event-hub-1"
+        description: "name of the hub which rockset should ingest from"
+      offset_reset_policy:
+        type: "string"
+        example: "EARLIEST"
+        description: "The offset reset policy."
+        enum:
+        - "LATEST"
+        - "EARLIEST"
+      status:
+        description: "source status"
+        readOnly: true
+        $ref: "#/definitions/StatusAzureEventHubs"
+  SourceAzureServiceBus:
+    type: "object"
+    properties:
+      topic:
+        type: "string"
+        example: "rockset-topic"
+        description: "name of the topic which rockset should ingest from"
+      subscription:
+        type: "string"
+        example: "rockset-subscription"
+        description: "the subscription to read from the topic"
+      status:
+        description: "Azure Service bus source status"
+        readOnly: true
+        $ref: "#/definitions/StatusAzureServiceBus"
   SourceDynamoDb:
     type: "object"
     required:
@@ -6739,6 +6845,11 @@ definitions:
         type: "string"
         example: "prefix/to/keys"
         description: "Prefix that selects keys to ingest."
+      pattern:
+        type: "string"
+        example: "prefix/to/**/keys/*.format"
+        description: "Glob-style pattern that selects keys to ingest. Only either\
+          \ prefix or pattern can be specified."
       object_count_downloaded:
         type: "integer"
         format: "int64"
@@ -6786,6 +6897,14 @@ definitions:
         description: "set of fields that correspond to a DMS primary key"
         items:
           type: "string"
+      offset_reset_policy:
+        type: "string"
+        example: "EARLIEST"
+        description: "For non-DMS streams, Rockset can tail from the earliest end\
+          \ or latest end of kinesis source."
+        enum:
+        - "LATEST"
+        - "EARLIEST"
   SourceMongoDb:
     type: "object"
     required:
@@ -6850,7 +6969,8 @@ definitions:
       pattern:
         type: "string"
         example: "prefix/to/**/keys/*.format"
-        description: "Pattern that selects keys to ingest."
+        description: "Glob-style pattern that selects keys to ingest. Only either\
+          \ prefix or pattern can be specified."
       region:
         type: "string"
         example: "us-west-2"
@@ -6924,6 +7044,67 @@ definitions:
         format: "int64"
         example: 32849023
         description: "Total items processed of source"
+  StatusAzureEventHubs:
+    type: "object"
+    properties:
+      state:
+        type: "string"
+        example: "ACTIVE"
+        description: "State of the source"
+        enum:
+        - "NO_DOCS_YET"
+        - "ACTIVE"
+        - "DORMANT"
+      last_consumed_time:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "Time at which the last document was consumed"
+      num_documents_processed:
+        type: "integer"
+        format: "int64"
+        example: 1337
+        description: "Number of documents consumed"
+      partitions:
+        type: "array"
+        description: "Status info per partition"
+        items:
+          $ref: "#/definitions/StatusAzureEventHubsPartition"
+  StatusAzureEventHubsPartition:
+    type: "object"
+    properties:
+      partition_number:
+        type: "integer"
+        format: "int32"
+        example: 123
+        description: "The number of this partition"
+      partition_offset:
+        type: "integer"
+        format: "int64"
+        example: 100
+        description: "Latest offset of partition"
+      offset_lag:
+        type: "integer"
+        format: "int64"
+        example: 10
+        description: "Per partition lag for offset"
+  StatusAzureServiceBus:
+    type: "object"
+    properties:
+      first_processed_at:
+        type: "string"
+        format: "date-time"
+        example: "2021-08-28T00:23:41Z"
+        description: "Service Bus first message processed time in ISO-8601 format"
+      records_processed:
+        type: "integer"
+        format: "int64"
+        example: 1000
+        description: "Number of records processed"
+      last_processed_at:
+        type: "string"
+        format: "date-time"
+        example: "2019-01-15T21:48:23Z"
+        description: "ISO-8601 date when the last message was processed"
   StatusDynamoDb:
     type: "object"
     properties:
