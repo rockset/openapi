@@ -14,7 +14,7 @@ tags:
 - name: "API Keys"
 - name: "Aliases"
 - name: "Collections"
-- name: "Custom Roles (beta)"
+- name: "Custom Roles"
 - name: "Documents"
 - name: "Integrations"
 - name: "Organizations"
@@ -746,7 +746,7 @@ paths:
   /v1/orgs/self/roles:
     get:
       tags:
-      - "Custom Roles (beta)"
+      - "Custom Roles"
       summary: "List Roles"
       description: "List all roles for your organization."
       operationId: "listRoles"
@@ -814,7 +814,7 @@ paths:
             $ref: "#/definitions/ErrorModel"
     post:
       tags:
-      - "Custom Roles (beta)"
+      - "Custom Roles"
       summary: "Create a Role"
       description: "Create a role for your organization."
       operationId: "createRole"
@@ -889,7 +889,7 @@ paths:
   /v1/orgs/self/roles/{roleName}:
     post:
       tags:
-      - "Custom Roles (beta)"
+      - "Custom Roles"
       summary: "Update a Role"
       description: "Update a role for your organization."
       operationId: "updateRole"
@@ -967,7 +967,7 @@ paths:
             $ref: "#/definitions/ErrorModel"
     delete:
       tags:
-      - "Custom Roles (beta)"
+      - "Custom Roles"
       summary: "Delete a Role"
       description: "Delete a role for your organization."
       operationId: "deleteRole"
@@ -1328,7 +1328,7 @@ paths:
     get:
       tags:
       - "Users"
-      summary: "Get all notification preferences"
+      summary: "Retrieve Notification Preferences"
       description: "Get all notification preferences."
       operationId: "listUnsubscribePreferences"
       consumes:
@@ -1396,7 +1396,7 @@ paths:
     post:
       tags:
       - "Users"
-      summary: "Update notification preferences"
+      summary: "Update Notification Preferences"
       description: "Update notification preference."
       operationId: "updateUnsubscribePreferences"
       consumes:
@@ -1618,7 +1618,7 @@ paths:
     get:
       tags:
       - "API Keys"
-      summary: "List API Keys."
+      summary: "List API Keys"
       description: "List API key metadata for any user in your organization."
       operationId: "listApiKeys"
       consumes:
@@ -1775,7 +1775,7 @@ paths:
     post:
       tags:
       - "API Keys"
-      summary: "Update an API key's state"
+      summary: "Update API Key State"
       description: "Update the state of an API key for any user in your organization."
       operationId: "updateApiKey"
       consumes:
@@ -4724,81 +4724,6 @@ paths:
           description: "view deleted successfully"
           schema:
             $ref: "#/definitions/DeleteViewResponse"
-  /v1/orgs/self/ws/{workspace}/ws:
-    get:
-      tags:
-      - "Workspaces"
-      summary: "List Workspaces in Workspace"
-      description: "List workspaces under given workspace."
-      operationId: "childWorkspaces"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "workspace"
-        in: "path"
-        description: "name of the workspace"
-        required: true
-        type: "string"
-        default: "commons"
-      responses:
-        200:
-          description: "workspaces retrieved successfully"
-          schema:
-            $ref: "#/definitions/ListWorkspacesResponse"
-        400:
-          description: "bad request"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        401:
-          description: "unauthorized"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        403:
-          description: "forbidden"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        404:
-          description: "not found"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        405:
-          description: "not allowed"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        406:
-          description: "not acceptable"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        408:
-          description: "request timeout"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        415:
-          description: "not supported"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        429:
-          description: "resource exceeded"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        500:
-          description: "internal error"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        501:
-          description: "not implemented"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        502:
-          description: "bad gateway"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        503:
-          description: "not ready"
-          schema:
-            $ref: "#/definitions/ErrorModel"
 definitions:
   AddDocumentsRequest:
     type: "object"
@@ -4881,8 +4806,6 @@ definitions:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "Date that API key was most recently used (ISO-8601 format)."
-      role:
-        type: "string"
       created_by:
         type: "string"
         example: "test@example.com"
@@ -5045,24 +4968,9 @@ definitions:
         description: "list of aliases for a collection"
         items:
           $ref: "#/definitions/Alias"
-      field_schemas:
-        type: "array"
-        description: "list of field schemas "
-        items:
-          $ref: "#/definitions/FieldSchema"
-      inverted_index_group_encoding_options:
-        description: "inverted index group encoding options"
-        $ref: "#/definitions/InvertedIndexGroupEncodingOptions"
-      fieldPartitions:
-        type: "array"
-        items:
-          $ref: "#/definitions/FieldPartition"
       insert_only:
         type: "boolean"
         description: "Whether the collection is insert only or not"
-      enable_exactly_once_writes:
-        type: "boolean"
-        description: "If true, exactly-once write semantics is enabled."
   CollectionStats:
     type: "object"
     properties:
@@ -5214,11 +5122,6 @@ definitions:
         example: 1000000
         description: "number of seconds after which data is purged, based on event\
           \ time"
-      time_partition_resolution_secs:
-        type: "integer"
-        format: "int64"
-        description: "If non-null, the collection will be time partitioned and each\
-          \ partition will be time_partition_resolution_secs wide."
       insert_only:
         type: "boolean"
         description: "If true disallows updates and deletes, but makes indexing more\
@@ -5239,14 +5142,6 @@ definitions:
         description: "list of clustering fields"
         items:
           $ref: "#/definitions/FieldPartition"
-      field_schemas:
-        type: "array"
-        description: "list of field schemas"
-        items:
-          $ref: "#/definitions/FieldSchema"
-      inverted_index_group_encoding_options:
-        description: "inverted index group encoding options"
-        $ref: "#/definitions/InvertedIndexGroupEncodingOptions"
   CreateCollectionResponse:
     type: "object"
     properties:
@@ -5276,9 +5171,6 @@ definitions:
         description: "Amazon DynamoDB details, must have one of aws_access_key or\
           \ aws_role"
         $ref: "#/definitions/DynamodbIntegration"
-      redshift:
-        description: "Amazon Redshift details"
-        $ref: "#/definitions/RedshiftIntegration"
       gcs:
         description: "GCS details"
         $ref: "#/definitions/GcsIntegration"
@@ -5553,7 +5445,7 @@ definitions:
       status:
         type: "string"
         example: "ADDED"
-        description: "status, one of ADDED, REPLACED, DELETED, ERROR"
+        description: "status of the document"
         enum:
         - "ADDED"
         - "REPLACED"
@@ -5701,46 +5593,6 @@ definitions:
       output_field:
         description: "An OutputField for this mapping"
         $ref: "#/definitions/OutputField"
-  FieldMask:
-    type: "object"
-    required:
-    - "input_path"
-    properties:
-      input_path:
-        type: "array"
-        items:
-          type: "string"
-      mask:
-        $ref: "#/definitions/FieldMaskMask"
-  FieldMaskMask:
-    type: "object"
-    required:
-    - "name"
-    properties:
-      name:
-        type: "string"
-      args:
-        type: "object"
-    description: "Field masking function name + args. The args is a JSON object."
-  FieldOptions:
-    type: "object"
-    properties:
-      index_mode:
-        type: "string"
-        example: "index"
-        description: " index or no_index"
-      range_index_mode:
-        type: "string"
-        example: "v1_index"
-        description: " v1_index or no_index"
-      type_index_mode:
-        type: "string"
-        example: "index"
-        description: " index or no_index"
-      column_index_mode:
-        type: "string"
-        example: "store"
-        description: " store or no_store"
   FieldPartition:
     type: "object"
     properties:
@@ -5761,18 +5613,6 @@ definitions:
         description: "The values for partitioning of a field"
         items:
           type: "string"
-  FieldSchema:
-    type: "object"
-    properties:
-      field_name:
-        type: "string"
-        example: "address.city.zipcode"
-        description: "The name of a field, parsed as a SQL qualified name"
-      field_options:
-        example: "Options to specify whether to build an inverted index  a type index,\
-          \ a range index and a column index on this field"
-        description: "The indexing options for a field"
-        $ref: "#/definitions/FieldOptions"
   FormatParams:
     type: "object"
     properties:
@@ -5787,6 +5627,10 @@ definitions:
       mysql_dms:
         type: "boolean"
       postgres_dms:
+        type: "boolean"
+      mssql_dms:
+        type: "boolean"
+      oracle_dms:
         type: "boolean"
   GcpServiceAccount:
     type: "object"
@@ -5924,22 +5768,6 @@ definitions:
         $ref: "#/definitions/MongoDbIntegration"
     description: "Integrations that can be associated with data sources to create\
       \ collections. Only one type of integration may be specified."
-  InvertedIndexGroupEncodingOptions:
-    type: "object"
-    properties:
-      format_version:
-        type: "integer"
-        format: "int64"
-      group_size:
-        type: "integer"
-        format: "int64"
-      restart_length:
-        type: "integer"
-        format: "int64"
-      event_time_codec:
-        type: "string"
-      doc_id_codec:
-        type: "string"
   KafkaIntegration:
     type: "object"
     properties:
@@ -6510,9 +6338,6 @@ definitions:
         type: "boolean"
         description: "Flag to enable warnings. Warnings can help debug query issues\
           \ but negatively affect performance."
-      profiling_enabled:
-        type: "boolean"
-        description: "Flag to generate a performance profile for this query."
       parameters:
         type: "array"
         description: "List of named parameters."
@@ -6597,39 +6422,6 @@ definitions:
         format: "int64"
         example: 126
         description: "time query was throttled by admission control"
-  RedshiftIntegration:
-    type: "object"
-    required:
-    - "host"
-    - "password"
-    - "port"
-    - "s3_bucket_path"
-    - "username"
-    properties:
-      aws_access_key:
-        description: "AWS access key credentials"
-        $ref: "#/definitions/AwsAccessKey"
-      username:
-        type: "string"
-        example: "awsuser"
-        description: "Username associated with Redshift cluster"
-      password:
-        type: "string"
-        example: "pswd...."
-        description: "Password associated with Redshift cluster"
-      host:
-        type: "string"
-        example: "test.yuyugt.us-west-2.redshift.amazonaws.com"
-        description: "Redshift Cluster host"
-      port:
-        type: "integer"
-        format: "int32"
-        example: 5439
-        description: "Redshift Cluster port"
-      s3_bucket_path:
-        type: "string"
-        example: "s3://redshift-unload"
-        description: "unload S3 bucket path"
   Role:
     type: "object"
     properties:
@@ -6703,9 +6495,6 @@ definitions:
         $ref: "#/definitions/SourceAzureServiceBus"
       azure_event_hubs:
         $ref: "#/definitions/SourceAzureEventHubs"
-      redshift:
-        description: "configuration for ingestion from Redshift"
-        $ref: "#/definitions/SourceRedshift"
       dynamodb:
         description: "configuration for ingestion from  a dynamodb table"
         $ref: "#/definitions/SourceDynamoDb"
@@ -6720,6 +6509,7 @@ definitions:
         $ref: "#/definitions/SourceMongoDb"
       status:
         description: "the ingest status of this source"
+        readOnly: true
         $ref: "#/definitions/Status"
       format_params:
         description: "format parameters for data from this source"
@@ -6746,12 +6536,15 @@ definitions:
       blob_count_downloaded:
         type: "integer"
         format: "int64"
+        readOnly: true
       blob_count_total:
         type: "integer"
         format: "int64"
+        readOnly: true
       blob_bytes_total:
         type: "integer"
         format: "int64"
+        readOnly: true
   SourceAzureEventHubs:
     type: "object"
     properties:
@@ -6853,12 +6646,15 @@ definitions:
       object_count_downloaded:
         type: "integer"
         format: "int64"
+        readOnly: true
       object_count_total:
         type: "integer"
         format: "int64"
+        readOnly: true
       object_bytes_total:
         type: "integer"
         format: "int64"
+        readOnly: true
   SourceKafka:
     type: "object"
     required:
@@ -6923,45 +6719,12 @@ definitions:
         description: "MongoDB source status"
         readOnly: true
         $ref: "#/definitions/StatusMongoDb"
-  SourceRedshift:
-    type: "object"
-    required:
-    - "database"
-    - "schema"
-    - "table_name"
-    properties:
-      database:
-        type: "string"
-        example: "dev"
-        description: "name of the database in Redshift Cluster"
-      schema:
-        type: "string"
-        example: "common"
-        description: "schema which contains the Redshift table"
-      table_name:
-        type: "string"
-        example: "redshift_table_name"
-        description: "name of Redshift table containing data"
-      incremental_field:
-        type: "string"
-        example: "updated_at"
-        description: "field in Redshift source table to monitor for updates"
   SourceS3:
     type: "object"
     required:
     - "bucket"
     - "prefixes"
     properties:
-      access_key:
-        type: "string"
-        example: "AKIAIOSFODNN7EXAMPLE"
-        description: "AWS credential with ListObjects and GetObject access"
-        readOnly: true
-      secret_access:
-        type: "string"
-        example: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY"
-        description: "AWS credential with ListObjects and GetObject access"
-        readOnly: true
       prefix:
         type: "string"
         example: "prefix/to/keys"
@@ -6986,26 +6749,18 @@ definitions:
         readOnly: true
         items:
           type: "string"
-      format:
-        type: "string"
-        example: "none"
-        description: "do not use"
-        enum:
-        - "JSON"
-      mappings:
-        type: "array"
-        description: "custom transformation on data field"
-        items:
-          $ref: "#/definitions/FieldMask"
       object_count_downloaded:
         type: "integer"
         format: "int64"
+        readOnly: true
       object_count_total:
         type: "integer"
         format: "int64"
+        readOnly: true
       object_bytes_total:
         type: "integer"
         format: "int64"
+        readOnly: true
   SqlExpression:
     type: "object"
     properties:
@@ -7100,11 +6855,25 @@ definitions:
         format: "int64"
         example: 1000
         description: "Number of records processed"
-      last_processed_at:
+      sessions:
+        type: "object"
+        description: "Sessions processed"
+        additionalProperties:
+          $ref: "#/definitions/StatusAzureServiceBusSession"
+  StatusAzureServiceBusSession:
+    type: "object"
+    properties:
+      sequence_number:
+        type: "integer"
+        format: "int64"
+        example: 323862
+        description: "The last processed sequence number within this session"
+      last_processed:
         type: "string"
         format: "date-time"
-        example: "2019-01-15T21:48:23Z"
-        description: "ISO-8601 date when the last message was processed"
+        example: "2022-08-23T00:13:41Z"
+        description: "Most recent ISO-8601 date when a message from this session was\
+          \ processed"
   StatusDynamoDb:
     type: "object"
     properties:
@@ -7430,19 +7199,12 @@ definitions:
     type: "object"
     required:
     - "collections"
-    - "name"
     - "parameters"
     properties:
-      name:
-        type: "array"
-        example: "[\"commons.foo\"]"
-        description: "list of collection specified in query"
-        items:
-          type: "string"
       collections:
         type: "array"
         example: "[\"commons.foo\"]"
-        description: "list of collection specified in query"
+        description: "list of collections specified in query"
         items:
           type: "string"
       parameters:
