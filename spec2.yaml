@@ -757,7 +757,7 @@ paths:
       parameters: []
       responses:
         200:
-          description: "roles retrived successfully"
+          description: "roles retrieved successfully"
           schema:
             $ref: "#/definitions/ListRolesResponse"
         400:
@@ -887,6 +887,78 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/roles/{roleName}:
+    get:
+      tags:
+      - "Custom Roles"
+      summary: "Retrieve role"
+      description: "Retrieve a role by name for your organization."
+      operationId: "getRole"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "roleName"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "role retrieved successfully"
+          schema:
+            $ref: "#/definitions/RoleResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     post:
       tags:
       - "Custom Roles"
@@ -4806,6 +4878,11 @@ definitions:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "Date that API key was most recently used (ISO-8601 format)."
+      role:
+        type: "string"
+        example: "read-only"
+        description: "Role specifying access control. If not specified, API key will\
+          \ have access to all of the associated user's roles."
       created_by:
         type: "string"
         example: "test@example.com"
@@ -5608,9 +5685,9 @@ definitions:
         - "AUTO"
       keys:
         type: "array"
-        example: "Values of a record to partition on. This is not needed if the partition\
-          \ type is AUTO"
-        description: "The values for partitioning of a field"
+        example: "[\"value1\", \"value2\"]"
+        description: "The values for partitioning of a field. Unneeded if the partition\
+          \ type is AUTO."
         items:
           type: "string"
   FormatParams:
@@ -5697,7 +5774,7 @@ definitions:
         description: "The name of a field, parsed as a SQL qualified name"
       if_missing:
         type: "string"
-        example: "['SKIP', 'PASS']"
+        example: "SKIP"
         description: "Define the behaviour if fieldName is missing or is null"
         enum:
         - "SKIP"
@@ -5779,7 +5856,7 @@ definitions:
           type: "string"
       source_status_by_topic:
         type: "object"
-        example: "topic-a:DORMANT"
+        example: "{\"topic-a\": \"DORMANT\"}"
         description: "The status of the Kafka source by topic"
         readOnly: true
         additionalProperties:
@@ -5981,7 +6058,7 @@ definitions:
         $ref: "#/definitions/SqlExpression"
       on_error:
         type: "string"
-        example: "['SKIP', 'FAIL']"
+        example: "SKIP"
         description: "Error in Mapping execution: 'skip' or 'fail' "
         enum:
         - "SKIP"
