@@ -6550,8 +6550,6 @@ definitions:
         readOnly: true
   Source:
     type: "object"
-    required:
-    - "integration_name"
     properties:
       integration_name:
         type: "string"
