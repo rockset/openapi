@@ -20,6 +20,7 @@ tags:
 - name: "Organizations"
 - name: "Queries"
 - name: "Query Lambdas"
+- name: "Shared Lambdas"
 - name: "Users"
 - name: "Views"
 - name: "Virtual Instances"
@@ -1928,6 +1929,85 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
       x-rename: "get"
+    post:
+      tags:
+      - "Users"
+      summary: "Update User"
+      description: "Update a user in an organization."
+      operationId: "updateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "user"
+        in: "path"
+        description: "email of the user to update"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateUserRequest"
+      responses:
+        200:
+          description: "user updated successfully"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
     delete:
       tags:
       - "Users"
@@ -2478,6 +2558,80 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
       x-rename: "list"
+    post:
+      tags:
+      - "Virtual Instances"
+      summary: "Create Virtual Instance"
+      description: "[beta] Create virtual instance"
+      operationId: "createVirtualInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateVirtualInstanceRequest"
+      responses:
+        200:
+          description: "virtual instance created successfully"
+          schema:
+            $ref: "#/definitions/CreateVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/virtualinstances/{virtualInstanceId}:
     get:
       tags:
@@ -2492,7 +2646,7 @@ paths:
       parameters:
       - name: "virtualInstanceId"
         in: "path"
-        description: "uuid of the virtual instance"
+        description: "Virtual Instance RRN"
         required: true
         type: "string"
       responses:
@@ -2566,7 +2720,7 @@ paths:
       parameters:
       - name: "virtualInstanceId"
         in: "path"
-        description: "uuid of the virtual instance"
+        description: "Virtual Instance RRN"
         required: true
         type: "string"
       - in: "body"
@@ -2580,6 +2734,689 @@ paths:
           description: "virtual instance updated successfully"
           schema:
             $ref: "#/definitions/UpdateVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    delete:
+      tags:
+      - "Virtual Instances"
+      summary: "Delete Virtual Instance"
+      description: "[beta] Delete a virtual instance."
+      operationId: "deleteVirtualInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "virtual instance deleted successfully"
+          schema:
+            $ref: "#/definitions/DeleteVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/virtualinstances/{virtualInstanceId}/mounts:
+    get:
+      tags:
+      - "Virtual Instances"
+      summary: "List Collection Mounts"
+      description: "[beta] List collection mounts for a particular VI."
+      operationId: "listCollectionMounts"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "resource mounted"
+          schema:
+            $ref: "#/definitions/ListCollectionMountsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    post:
+      tags:
+      - "Virtual Instances"
+      summary: "Mount Collection"
+      description: "[beta] Mount a collection to this virtual instance."
+      operationId: "mountCollection"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateCollectionMountRequest"
+      responses:
+        200:
+          description: "collection mounted"
+          schema:
+            $ref: "#/definitions/CollectionMountResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/virtualinstances/{virtualInstanceId}/mounts/{collectionPath}:
+    get:
+      tags:
+      - "Virtual Instances"
+      summary: "Get Collection Mount"
+      description: "[beta] Get a mount on this virtual instance."
+      operationId: "getCollectionMount"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      - name: "collectionPath"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "collection unmounted"
+          schema:
+            $ref: "#/definitions/CollectionMountResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    delete:
+      tags:
+      - "Virtual Instances"
+      summary: "Unmount Collection"
+      description: "[beta] Unmount a collection from this virtual instance."
+      operationId: "unmountCollection"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      - name: "collectionPath"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "collection unmounted"
+          schema:
+            $ref: "#/definitions/CollectionMountResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/virtualinstances/{virtualInstanceId}/queries:
+    get:
+      tags:
+      - "Virtual Instances"
+      summary: "List Queries"
+      description: "[beta] Lists actively queued and running queries for a particular\
+        \ Virtual Instance."
+      operationId: "listActiveQueries"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successfully fetched queries"
+          schema:
+            $ref: "#/definitions/ListQueriesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    post:
+      tags:
+      - "Virtual Instances"
+      summary: "Execute SQL Query"
+      description: "[beta] Make a SQL query to Rockset."
+      operationId: "query"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/QueryRequest"
+      responses:
+        200:
+          description: "query executed successfully"
+          schema:
+            $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/virtualinstances/{virtualInstanceId}/resume:
+    post:
+      tags:
+      - "Virtual Instances"
+      summary: "Resume Virtual Instance"
+      description: "[beta] Resume a virtual instance."
+      operationId: "resumeVirtualInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "virtual instance resumed successfully"
+          schema:
+            $ref: "#/definitions/ResumeVirtualInstanceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/virtualinstances/{virtualInstanceId}/suspend:
+    post:
+      tags:
+      - "Virtual Instances"
+      summary: "Suspend Virtual Instance"
+      description: "[beta] Suspend a virtual instance."
+      operationId: "suspendVirtualInstance"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "virtualInstanceId"
+        in: "path"
+        description: "Virtual Instance RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "virtual instance suspended successfully"
+          schema:
+            $ref: "#/definitions/SuspendVirtualInstanceResponse"
         400:
           description: "bad request"
           schema:
@@ -5135,6 +5972,80 @@ paths:
           schema:
             $ref: "#/definitions/DeleteViewResponse"
       x-rename: "delete"
+  /v1/public/shared_lambdas/{public_access_id}:
+    get:
+      tags:
+      - "Shared Lambdas"
+      summary: "Execute a Public Query Lambda"
+      description: "Execute a public query lambda."
+      operationId: "executePublicQueryLambda"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "public_access_id"
+        in: "path"
+        description: "public access ID of the query lambda"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Query Lambda executed successfully"
+          schema:
+            $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
 definitions:
   AddDocumentsRequest:
     type: "object"
@@ -5228,7 +6139,7 @@ definitions:
           \ have access to all of the associated user's roles."
       created_by:
         type: "string"
-        example: "test@example.com"
+        example: "test@rockset.com"
         description: "Email of API key owner."
       state:
         type: "string"
@@ -5428,6 +6339,60 @@ definitions:
       insert_only:
         type: "boolean"
         description: "Whether the collection is insert only or not."
+  CollectionMount:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        example: "STATIC"
+        description: "Mount type."
+        enum:
+        - "STATIC"
+        - "LIVE"
+      created_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date."
+      state:
+        type: "string"
+        example: "ACTIVE"
+        description: "Mount type."
+        enum:
+        - "CREATING"
+        - "ACTIVE"
+        - "EXPIRED"
+        - "DELETING"
+      collection_path:
+        type: "string"
+        example: "commons.foo"
+        description: "Collection path."
+      virtual_instance_id:
+        type: "string"
+        example: "5ac23...."
+        description: "Virtual instance ID."
+      virtual_instance_rrn:
+        type: "string"
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "Virtual Instance RRN."
+      id:
+        type: "string"
+        example: "5ac23...."
+        description: "Mount ID."
+      rrn:
+        type: "string"
+        example: "rrn:mnt:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "Mount RRN."
+      snapshot_expiration_time_millis:
+        type: "integer"
+        format: "int64"
+        example: 864000000
+        description: "Time in millis at which the snapshot expires."
+  CollectionMountResponse:
+    type: "object"
+    properties:
+      data:
+        description: "Resource mount object."
+        $ref: "#/definitions/CollectionMount"
   CollectionStats:
     type: "object"
     properties:
@@ -5548,16 +6513,32 @@ definitions:
         description: "Name for this API key."
       role:
         type: "string"
+      created_by:
+        type: "string"
   CreateApiKeyResponse:
     type: "object"
     properties:
       data:
         description: "The API key that was created."
         $ref: "#/definitions/ApiKey"
+  CreateCollectionMountRequest:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        example: "STATIC"
+        description: "Mount type."
+        enum:
+        - "STATIC"
+        - "LIVE"
+      collection_paths:
+        type: "array"
+        example: "[commons.foo, commons.bar]"
+        description: "Collections to mount."
+        items:
+          type: "string"
   CreateCollectionRequest:
     type: "object"
-    required:
-    - "name"
     properties:
       name:
         type: "string"
@@ -5579,16 +6560,14 @@ definitions:
         example: 1000000
         description: "Number of seconds after which data is purged, based on event\
           \ time."
-      insert_only:
-        type: "boolean"
-        description: "If true disallows updates and deletes, but makes indexing more\
-          \ efficient."
+        minimum: 1
       event_time_info:
-        description: "Configuration for event data."
+        description: "Deprecated. Configuration for event data. Use an _event_time\
+          \ mapping in `field_mapping_query` instead."
         $ref: "#/definitions/EventTimeInfo"
       field_mappings:
         type: "array"
-        description: "List of mappings."
+        description: "Deprecated. List of mappings. Use field_mapping_query instead."
         items:
           $ref: "#/definitions/FieldMappingV2"
       field_mapping_query:
@@ -5596,8 +6575,8 @@ definitions:
         $ref: "#/definitions/FieldMappingQuery"
       clustering_key:
         type: "array"
-        description: "DEPRECATED. List of clustering fields. Use CLUSTER BY clause\
-          \ in ingest transformation instead."
+        description: "Deprecated. List of clustering fields. Use CLUSTER BY clause\
+          \ in `field_mapping_query` instead."
         items:
           $ref: "#/definitions/FieldPartition"
   CreateCollectionResponse:
@@ -5673,6 +6652,8 @@ definitions:
       sql:
         description: "Query Lambda SQL query."
         $ref: "#/definitions/QueryLambdaSql"
+      is_public:
+        type: "boolean"
   CreateQueryLambdaTagRequest:
     type: "object"
     required:
@@ -5749,6 +6730,49 @@ definitions:
       data:
         description: "View that was updated."
         $ref: "#/definitions/View"
+  CreateVirtualInstanceRequest:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      type:
+        type: "string"
+        example: "LARGE"
+        description: "Requested virtual instance type."
+        enum:
+        - "FREE"
+        - "NANO"
+        - "SHARED"
+        - "MILLI"
+        - "XSMALL"
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+        - "XLARGE"
+        - "XLARGE2"
+        - "XLARGE4"
+        - "XLARGE8"
+        - "XLARGE16"
+      name:
+        type: "string"
+        example: "prod_vi"
+        description: "Unique identifier for virtual instance, can contain alphanumeric\
+          \ or dash characters."
+      description:
+        type: "string"
+        example: "VI serving prod traffic"
+        description: "Description of requested virtual instance."
+      auto_suspend_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds without queries after which the VI is suspended"
+  CreateVirtualInstanceResponse:
+    type: "object"
+    properties:
+      data:
+        description: "Virtual instance object."
+        $ref: "#/definitions/VirtualInstance"
   CreateWorkspaceRequest:
     type: "object"
     required:
@@ -5886,6 +6910,12 @@ definitions:
       data:
         description: "View that was deleted."
         $ref: "#/definitions/View"
+  DeleteVirtualInstanceResponse:
+    type: "object"
+    properties:
+      data:
+        description: "Virtual instance that was deleted."
+        $ref: "#/definitions/VirtualInstance"
   DeleteWorkspaceResponse:
     type: "object"
     properties:
@@ -6148,10 +7178,6 @@ definitions:
     properties:
       data:
         $ref: "#/definitions/QueryInfo"
-      last_offset:
-        type: "string"
-        description: "If this was a write query, this is the log offset the query\
-          \ was written to."
   GetViewResponse:
     type: "object"
     properties:
@@ -6329,6 +7355,14 @@ definitions:
         description: "List of API key objects."
         items:
           $ref: "#/definitions/ApiKey"
+  ListCollectionMountsResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        description: "List of all collection mounts."
+        items:
+          $ref: "#/definitions/CollectionMount"
   ListCollectionsResponse:
     type: "object"
     properties:
@@ -6436,22 +7470,6 @@ definitions:
   Organization:
     type: "object"
     properties:
-      deletionScheduledAt:
-        type: "string"
-      rockset_user:
-        type: "string"
-        example: "<id>"
-        description: "Rockset's global AWS user."
-      external_id:
-        type: "string"
-        example: "<hash>"
-        description: "Organization's unique external ID within Rockset."
-      clusters:
-        type: "array"
-        example: "[{ ... }]"
-        description: "List of clusters associated with this org."
-        items:
-          $ref: "#/definitions/Cluster"
       id:
         type: "string"
         example: "rockset"
@@ -6464,6 +7482,20 @@ definitions:
         type: "string"
         example: "Rockset, Inc"
         description: "Name of the organization."
+      external_id:
+        type: "string"
+        example: "<hash>"
+        description: "Organization's unique external ID within Rockset."
+      rockset_user:
+        type: "string"
+        example: "<id>"
+        description: "Rockset's global AWS user."
+      clusters:
+        type: "array"
+        example: "[{ ... }]"
+        description: "List of clusters associated with this org."
+        items:
+          $ref: "#/definitions/Cluster"
     description: "An organization in Rockset is a container for users and collections."
   OrganizationResponse:
     type: "object"
@@ -6862,6 +7894,9 @@ definitions:
       stats:
         description: "Stats related to this Query Lambda."
         $ref: "#/definitions/QueryLambdaStats"
+      public_access_id:
+        type: "string"
+        description: "Public access ID associated with this QL version"
   QueryLambdaVersionResponse:
     type: "object"
     properties:
@@ -7010,6 +8045,12 @@ definitions:
         format: "int64"
         example: 126
         description: "Time query was throttled by admission control."
+  ResumeVirtualInstanceResponse:
+    type: "object"
+    properties:
+      data:
+        description: "Virtual instance that was resumed."
+        $ref: "#/definitions/VirtualInstance"
   Role:
     type: "object"
     properties:
@@ -7110,6 +8151,10 @@ definitions:
   Source:
     type: "object"
     properties:
+      id:
+        type: "string"
+        example: "a1df483c-734e-485b-8005-f46386ef42f6"
+        description: "Unique source identifier."
       integration_name:
         type: "string"
         example: "aws-integration"
@@ -7487,10 +8532,6 @@ definitions:
         - "PROCESSING"
         - "COMPLETED"
         - "ERROR"
-      since:
-        type: "string"
-        example: "2019-01-15T21:48:23Z"
-        description: "ISO-8601 date when state was triggered."
       message:
         type: "string"
         example: "error 403 forbidden"
@@ -7508,23 +8549,6 @@ definitions:
         format: "int64"
         example: 32849023
         description: "Total items processed of source."
-      last_error_at:
-        type: "string"
-        example: "2019-01-15T21:48:23Z"
-        description: "ISO-8601 date when last error occurred."
-      last_error_item:
-        type: "string"
-        example: "/path/to/some/object"
-        description: "Last source item that errored."
-      last_error_reason:
-        type: "string"
-        example: "invalid format .docx"
-        description: "Reason for the last error."
-      total_error_items:
-        type: "integer"
-        format: "int64"
-        example: 32849023
-        description: "Total items that errored."
   StatusAzureEventHubs:
     type: "object"
     properties:
@@ -7763,6 +8787,12 @@ definitions:
         - "EXPORTING_TO_S3"
         - "DOWNLOADING_FROM_S3"
         - "COMPLETED"
+  SuspendVirtualInstanceResponse:
+    type: "object"
+    properties:
+      data:
+        description: "Virtual instance that was suspended."
+        $ref: "#/definitions/VirtualInstance"
   UnsubscribePreference:
     type: "object"
     required:
@@ -7814,6 +8844,8 @@ definitions:
       sql:
         description: "Query Lambda SQL query."
         $ref: "#/definitions/QueryLambdaSql"
+      is_public:
+        type: "boolean"
   UpdateRoleRequest:
     type: "object"
     properties:
@@ -7842,6 +8874,23 @@ definitions:
         description: "List of notification preferences."
         items:
           $ref: "#/definitions/UnsubscribePreference"
+  UpdateUserRequest:
+    type: "object"
+    properties:
+      first_name:
+        type: "string"
+        example: "John"
+        description: "User first name."
+      last_name:
+        type: "string"
+        example: "Doe"
+        description: "User last name."
+      roles:
+        type: "array"
+        example: "[\"admin\", \"member\", \"read-only\"]"
+        description: "New list of roles for a given user."
+        items:
+          type: "string"
   UpdateViewRequest:
     type: "object"
     required:
@@ -7872,21 +8921,7 @@ definitions:
         - "FREE"
         - "NANO"
         - "SHARED"
-        - "XSMALL"
-        - "SMALL"
-        - "MEDIUM"
-        - "LARGE"
-        - "XLARGE"
-        - "XLARGE2"
-        - "XLARGE4"
-        - "XLARGE8"
-        - "XLARGE16"
-      new_type:
-        type: "string"
-        enum:
-        - "FREE"
-        - "NANO"
-        - "SHARED"
+        - "MILLI"
         - "XSMALL"
         - "SMALL"
         - "MEDIUM"
@@ -7906,6 +8941,15 @@ definitions:
         type: "string"
         example: "VI for prod traffic"
         description: "New virtual instance description."
+      auto_suspend_enabled:
+        type: "boolean"
+        example: true
+        description: "Whether auto-suspend should be enabled for this Virtual Instance."
+      auto_suspend_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds without queries after which the VI is suspended"
   UpdateVirtualInstanceResponse:
     type: "object"
     properties:
@@ -8052,36 +9096,6 @@ definitions:
         - "SUSPENDED"
         - "RESUMING"
         - "DELETED"
-      current_type:
-        type: "string"
-        enum:
-        - "FREE"
-        - "NANO"
-        - "SHARED"
-        - "XSMALL"
-        - "SMALL"
-        - "MEDIUM"
-        - "LARGE"
-        - "XLARGE"
-        - "XLARGE2"
-        - "XLARGE4"
-        - "XLARGE8"
-        - "XLARGE16"
-      desired_type:
-        type: "string"
-        enum:
-        - "FREE"
-        - "NANO"
-        - "SHARED"
-        - "XSMALL"
-        - "SMALL"
-        - "MEDIUM"
-        - "LARGE"
-        - "XLARGE"
-        - "XLARGE2"
-        - "XLARGE4"
-        - "XLARGE8"
-        - "XLARGE16"
       current_size:
         type: "string"
         example: "MEDIUM"
@@ -8091,6 +9105,7 @@ definitions:
         - "FREE"
         - "NANO"
         - "SHARED"
+        - "MILLI"
         - "XSMALL"
         - "SMALL"
         - "MEDIUM"
@@ -8109,6 +9124,7 @@ definitions:
         - "FREE"
         - "NANO"
         - "SHARED"
+        - "MILLI"
         - "XSMALL"
         - "SMALL"
         - "MEDIUM"
@@ -8136,6 +9152,22 @@ definitions:
         type: "string"
         example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
         description: "Virtual Instance RRN."
+      auto_suspend_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds without queries after which the VI is suspended"
+      stats:
+        description: "Stats about this VirtualInstance"
+        $ref: "#/definitions/VirtualInstanceStats"
+  VirtualInstanceStats:
+    type: "object"
+    properties:
+      last_queried_ms:
+        type: "integer"
+        format: "int64"
+        example: 1535101119334
+        description: "Milliseconds since Unix epoch Jan 1, 1970."
   Workspace:
     type: "object"
     properties:
