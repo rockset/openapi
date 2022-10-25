@@ -981,15 +981,13 @@ paths:
         type: "string"
       - name: "cursor"
         in: "query"
+        description: "Cursor to current page. If unset, will default to the first\
+          \ page."
         required: false
         type: "string"
       - name: "docs"
         in: "query"
-        required: false
-        type: "integer"
-        format: "int32"
-      - name: "offset"
-        in: "query"
+        description: "Number of documents to fetch."
         required: false
         type: "integer"
         format: "int32"
@@ -3174,7 +3172,7 @@ paths:
       summary: "List Queries"
       description: "[beta] Lists actively queued and running queries for a particular\
         \ Virtual Instance."
-      operationId: "listActiveQueries"
+      operationId: "getVirtualInstanceQueries"
       consumes:
       - "application/json"
       produces:
@@ -3247,7 +3245,7 @@ paths:
       - "Virtual Instances"
       summary: "Execute SQL Query"
       description: "[beta] Make a SQL query to Rockset."
-      operationId: "query"
+      operationId: "queryVirtualInstance"
       consumes:
       - "application/json"
       produces:
@@ -5491,6 +5489,7 @@ paths:
           $ref: "#/definitions/UpdateQueryLambdaRequest"
       - name: "create"
         in: "query"
+        description: "Create a new Query Lambda if one does not exist already."
         required: false
         type: "boolean"
       responses:
@@ -6620,8 +6619,6 @@ definitions:
       azure_event_hubs:
         description: "Azure Event Hubs details."
         $ref: "#/definitions/AzureEventHubsIntegration"
-      segment:
-        $ref: "#/definitions/SegmentIntegration"
       kafka:
         $ref: "#/definitions/KafkaIntegration"
       mongodb:
@@ -7266,9 +7263,6 @@ definitions:
       azure_event_hubs:
         description: "Azure Event Hubs details."
         $ref: "#/definitions/AzureEventHubsIntegration"
-      segment:
-        description: "Segment details."
-        $ref: "#/definitions/SegmentIntegration"
       kafka:
         description: "Kafka details."
         $ref: "#/definitions/KafkaIntegration"
@@ -8105,12 +8099,6 @@ definitions:
       secret:
         type: "string"
         description: "The secure API password registry."
-  SegmentIntegration:
-    type: "object"
-    properties:
-      connection_string:
-        type: "string"
-        description: "Segment connection string."
   SnowflakeIntegration:
     type: "object"
     required:
