@@ -2006,6 +2006,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+      x-rename: "update"
     delete:
       tags:
       - "Users"
@@ -2630,6 +2631,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+      x-rename: "create"
   /v1/orgs/self/virtualinstances/{virtualInstanceId}:
     get:
       tags:
@@ -2784,6 +2786,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+      x-rename: "update"
     delete:
       tags:
       - "Virtual Instances"
@@ -2857,6 +2860,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+      x-rename: "delete"
   /v1/orgs/self/virtualinstances/{virtualInstanceId}/mounts:
     get:
       tags:
@@ -2957,7 +2961,7 @@ paths:
         200:
           description: "collection mounted"
           schema:
-            $ref: "#/definitions/CollectionMountResponse"
+            $ref: "#/definitions/CreateCollectionMountsResponse"
         400:
           description: "bad request"
           schema:
@@ -4440,6 +4444,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        413:
+          description: "content too large"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4608,6 +4616,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        413:
+          description: "content too large"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5972,12 +5984,12 @@ paths:
             $ref: "#/definitions/DeleteViewResponse"
       x-rename: "delete"
   /v1/public/shared_lambdas/{public_access_id}:
-    get:
+    post:
       tags:
       - "Shared Lambdas"
       summary: "Execute a Public Query Lambda"
-      description: "Execute a public query lambda."
-      operationId: "executePublicQueryLambda"
+      description: "Execute a public query lambda (full version)."
+      operationId: "executePublicQueryLambdaWithParams"
       consumes:
       - "application/json"
       produces:
@@ -5988,6 +6000,12 @@ paths:
         description: "public access ID of the query lambda"
         required: true
         type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: false
+        schema:
+          $ref: "#/definitions/ExecutePublicQueryLambdaRequest"
       responses:
         200:
           description: "Query Lambda executed successfully"
@@ -6225,6 +6243,79 @@ definitions:
         type: "string"
         example: "Endpoint=sb://<NamespaceName>.servicebus.windows.net/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>"
         description: "Credentials for the Azure Service Bus."
+  BulkStats:
+    type: "object"
+    properties:
+      started_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the bulk ingest was started."
+      initializing_stage_done_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the initializing stage was completed."
+      downloading_stage_done_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the downloading stage was completed."
+      provisioning_stage_done_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the provisioning stage was completed."
+      indexing_stage_done_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the indexing stage was completed."
+      finalizing_stage_done_at:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "ISO-8601 date of when the finalizing stage was completed."
+      documents_downloaded:
+        type: "integer"
+        format: "int64"
+        example: 10000
+        description: "Number of documents downloaded from source during an ongoing\
+          \ or completed bulk ingest. This includes documents that are dropped and\
+          \ reingested."
+      data_downloaded_bytes:
+        type: "integer"
+        format: "int64"
+        example: 10000000
+        description: "Size in bytes of documents downloaded from source during an\
+          \ ongoing or completed bulk ingest. This includes documents that are dropped\
+          \ and reingested."
+      download_compute_ms:
+        type: "integer"
+        format: "int64"
+        example: 50000
+        description: "Bulk ingest compute units in milliseconds used for downloading\
+          \ documents."
+      data_indexed_bytes:
+        type: "integer"
+        format: "int64"
+        example: 8000000
+        description: "Size in bytes of documents indexed. This is the total size of\
+          \ documents after transformations and dropping before indexes are built."
+      index_compute_ms:
+        type: "integer"
+        format: "int64"
+        example: 100000
+        description: "Bulk ingest compute units in milliseconds used for indexing\
+          \ documents."
+      total_index_size_bytes:
+        type: "integer"
+        format: "int64"
+        example: 10000000
+        description: "Total size of indexes after the completed bulk ingest. This\
+          \ is the same as collection size."
+      data_indexed_throughput_bytes:
+        type: "number"
+        format: "double"
+        example: 800000.5
+        description: "Throughput of documents indexed in the last minute measured\
+          \ in bytes/s. This is based off the data_indexed_bytes size. Throughput\
+          \ during the download stage is shown on a per-source granularity in the\
+          \ sources field of the Collection response."
   CancelQueryResponse:
     type: "object"
     properties:
@@ -6338,6 +6429,10 @@ definitions:
       insert_only:
         type: "boolean"
         description: "Whether the collection is insert only or not."
+      bulk_stats:
+        type: "array"
+        items:
+          $ref: "#/definitions/BulkStats"
   CollectionMount:
     type: "object"
     properties:
@@ -6386,12 +6481,23 @@ definitions:
         format: "int64"
         example: 864000000
         description: "Time in millis at which the snapshot expires."
+      stats:
+        description: "Stats about this Collection Mount"
+        $ref: "#/definitions/CollectionMountStats"
   CollectionMountResponse:
     type: "object"
     properties:
       data:
         description: "Resource mount object."
         $ref: "#/definitions/CollectionMount"
+  CollectionMountStats:
+    type: "object"
+    properties:
+      last_queried_ms:
+        type: "integer"
+        format: "int64"
+        example: 1535101119334
+        description: "Milliseconds since Unix epoch Jan 1, 1970."
   CollectionStats:
     type: "object"
     properties:
@@ -6532,10 +6638,18 @@ definitions:
         - "LIVE"
       collection_paths:
         type: "array"
-        example: "[commons.foo, commons.bar]"
+        example: "[\"commons.foo\", \"commons.bar\"]"
         description: "Collections to mount."
         items:
           type: "string"
+  CreateCollectionMountsResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        description: "Mounts created."
+        items:
+          $ref: "#/definitions/CollectionMount"
   CreateCollectionRequest:
     type: "object"
     properties:
@@ -6697,6 +6811,14 @@ definitions:
         description: "List of roles for a given user."
         items:
           type: "string"
+      first_name:
+        type: "string"
+        example: "John"
+        description: "User first name."
+      last_name:
+        type: "string"
+        example: "Doe"
+        description: "User last name."
   CreateUserResponse:
     type: "object"
     properties:
@@ -6741,7 +6863,6 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
-        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -6987,11 +7108,12 @@ definitions:
         - "NOT_READY"
         - "FORBIDDEN"
         - "QUERY_TIMEOUT"
-        - "ROLE_NOT_FOUND"
         - "CONNECTION_ERROR"
+        - "CONTENTTOOLARGE"
         - "CREATING"
         - "BADREQUEST"
         - "SERVICEUNAVAILABLE"
+        - "CONFLICT"
         - "RATELIMITEXCEEDED"
         - "QUERY_CANCELLED"
         - "CLIENT_CONNECTION_ERROR"
@@ -7031,6 +7153,21 @@ definitions:
         type: "string"
         example: "UTC"
         description: "Default time zone, in standard IANA format."
+  ExecutePublicQueryLambdaRequest:
+    type: "object"
+    properties:
+      parameters:
+        type: "array"
+        description: "List of named parameters."
+        items:
+          $ref: "#/definitions/QueryParameter"
+      default_row_limit:
+        type: "integer"
+        format: "int32"
+        description: "Row limit to use if no limit specified in the SQL query text."
+      generate_warnings:
+        type: "boolean"
+        description: "Whether to generate warnings."
   ExecuteQueryLambdaRequest:
     type: "object"
     properties:
@@ -7305,6 +7442,9 @@ definitions:
       connection_string:
         type: "string"
         description: "Kafka connection string."
+      aws_role:
+        description: "Details of an AWS cross-account role integration."
+        $ref: "#/definitions/AwsRole"
       use_v3:
         type: "boolean"
       bootstrap_servers:
@@ -7312,7 +7452,7 @@ definitions:
         example: "localhost:9092"
         description: "The Kafka bootstrap server url(s). Required only for V3 integration."
       security_config:
-        description: "Kafka security configurations. Required only for V3 integration."
+        description: "Kafka security configurations."
         $ref: "#/definitions/KafkaV3SecurityConfig"
       schema_registry_config:
         description: "Kafka configurations for schema registry."
@@ -7953,6 +8093,7 @@ definitions:
         description: "SQL query string."
       generate_warnings:
         type: "boolean"
+        example: false
         description: "Flag to enable warnings. Warnings can help debug query issues\
           \ but negatively affect performance."
       parameters:
@@ -8537,6 +8678,11 @@ definitions:
         format: "int64"
         example: 32849023
         description: "Total items processed of source."
+      detected_size_bytes:
+        type: "integer"
+        format: "int64"
+        description: "Size in bytes detected for the source at collection initialization.\
+          \ This size can be 0 or null for event stream sources."
   StatusAzureEventHubs:
     type: "object"
     properties:
@@ -8910,7 +9056,6 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
-        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -9094,7 +9239,6 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
-        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -9113,7 +9257,6 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
-        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
