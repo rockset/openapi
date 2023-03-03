@@ -6917,6 +6917,12 @@ definitions:
         format: "int32"
         example: 3600
         description: "Number of seconds without queries after which the VI is suspended"
+      mount_refresh_interval_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds between data refreshes for mounts on this\
+          \ Virtual Instance"
   CreateVirtualInstanceResponse:
     type: "object"
     properties:
@@ -9113,6 +9119,12 @@ definitions:
         format: "int32"
         example: 3600
         description: "Number of seconds without queries after which the VI is suspended"
+      mount_refresh_interval_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds between data refreshes for mounts on this\
+          \ Virtual Instance"
   UpdateVirtualInstanceResponse:
     type: "object"
     properties:
@@ -9318,6 +9330,12 @@ definitions:
         format: "int32"
         example: 3600
         description: "Number of seconds without queries after which the VI is suspended"
+      mount_refresh_interval_seconds:
+        type: "integer"
+        format: "int32"
+        example: 3600
+        description: "Number of seconds between data refreshes for mounts on this\
+          \ Virtual Instance"
       stats:
         description: "Stats about this VirtualInstance"
         $ref: "#/definitions/VirtualInstanceStats"
