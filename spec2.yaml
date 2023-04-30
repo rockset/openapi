@@ -6281,6 +6281,50 @@ definitions:
         format: "int64"
         description: "The maximum amount of time that the system will attempt to complete\
           \ query execution before aborting the query and returning an error."
+  AutoScalingPolicy:
+    type: "object"
+    properties:
+      enabled:
+        type: "boolean"
+        example: true
+        description: "Whether auto scaling policy is enabled."
+      max_size:
+        type: "string"
+        example: "XLARGE2"
+        description: "Maximum size Rockset can auto scale the Virtual Instance to.This\
+          \ value should be one of the dedicated sizes greater than or same as the\
+          \ min_size"
+        enum:
+        - "FREE"
+        - "NANO"
+        - "SHARED"
+        - "MILLI"
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+        - "XLARGE"
+        - "XLARGE2"
+        - "XLARGE4"
+        - "XLARGE8"
+        - "XLARGE16"
+      min_size:
+        type: "string"
+        example: "LARGE"
+        description: "Minimum size Rockset can auto scale the Virtual Instance to.This\
+          \ value should be one of the dedicated sizes lower than or same as the max_size"
+        enum:
+        - "FREE"
+        - "NANO"
+        - "SHARED"
+        - "MILLI"
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+        - "XLARGE"
+        - "XLARGE2"
+        - "XLARGE4"
+        - "XLARGE8"
+        - "XLARGE16"
   AvroParams:
     type: "object"
   AwsAccessKey:
@@ -9178,6 +9222,10 @@ definitions:
   UpdateVirtualInstanceRequest:
     type: "object"
     properties:
+      auto_scaling_policy:
+        example: "true"
+        $ref: "#/definitions/AutoScalingPolicy"
+        description: "Options for configuring auto scaling policy"
       auto_suspend_enabled:
         type: "boolean"
         example: true
@@ -9333,6 +9381,9 @@ definitions:
     required:
     - "name"
     properties:
+      auto_scaling_policy:
+        $ref: "#/definitions/AutoScalingPolicy"
+        description: "Options for configuring auto scaling policy"
       auto_suspend_seconds:
         type: "integer"
         format: "int32"
