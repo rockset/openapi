@@ -21,6 +21,7 @@ tags:
 - name: "Queries"
 - name: "Query Lambdas"
 - name: "Shared Lambdas"
+- name: "Sources"
 - name: "Users"
 - name: "Views"
 - name: "Virtual Instances"
@@ -2944,7 +2945,7 @@ paths:
     post:
       tags:
       - "Virtual Instances"
-      summary: "Mount Collection"
+      summary: "Mount Collections"
       description: "[beta] Mount a collection to this virtual instance."
       operationId: "mountCollection"
       consumes:
@@ -3025,7 +3026,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Get Collection Mount"
-      description: "[beta] Get a mount on this virtual instance."
+      description: "[beta] Retrieve a mount on this virtual instance."
       operationId: "getCollectionMount"
       consumes:
       - "application/json"
@@ -4043,6 +4044,58 @@ paths:
           description: "alias updated successfully"
           schema:
             $ref: "#/definitions/GetAliasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
       x-rename: "update"
     delete:
       tags:
@@ -4071,6 +4124,58 @@ paths:
           description: "alias deleted successfully"
           schema:
             $ref: "#/definitions/DeleteAliasResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
       x-rename: "delete"
   /v1/orgs/self/ws/{workspace}/collections:
     get:
@@ -4738,6 +4843,514 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/sources:
+    get:
+      tags:
+      - "Sources"
+      summary: "List sources in collection"
+      description: "Retrieve all sources in a collection."
+      operationId: "listCollectionSources"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "collection sources retrieved successfully"
+          schema:
+            $ref: "#/definitions/ListSourcesResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    post:
+      tags:
+      - "Sources"
+      summary: "Create a source"
+      description: "Create new source in a collection."
+      operationId: "createSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/Source"
+      responses:
+        200:
+          description: "source created successfully"
+          schema:
+            $ref: "#/definitions/GetSourceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/sources/{source}:
+    get:
+      tags:
+      - "Sources"
+      summary: "Retrieve source"
+      description: "Get details about a collection source."
+      operationId: "getSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "path"
+        name: "source"
+        description: "id of source"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "collection retrieved successfully"
+          schema:
+            $ref: "#/definitions/GetSourceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "get"
+    delete:
+      tags:
+      - "Sources"
+      summary: "Delete Collection source"
+      description: "Delete a collection source"
+      operationId: "deleteSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "path"
+        name: "source"
+        description: "id of source"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "source deleted successfully"
+          schema:
+            $ref: "#/definitions/DeleteSourceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "delete"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/sources/{source}/resume:
+    post:
+      tags:
+      - "Sources"
+      summary: "Resume source ingest"
+      description: "Resume source ingest"
+      operationId: "resumeSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "path"
+        name: "source"
+        description: "id of source"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "source was resumed"
+          schema:
+            $ref: "#/definitions/GetSourceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "get"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/sources/{source}/suspend:
+    post:
+      tags:
+      - "Sources"
+      summary: "Suspend source ingest"
+      description: "Suspend source ingest"
+      operationId: "suspendSource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "path"
+        name: "source"
+        description: "id of source"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "source was suspended"
+          schema:
+            $ref: "#/definitions/GetSourceResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "get"
   /v1/orgs/self/ws/{workspace}/lambdas:
     get:
       tags:
@@ -5931,6 +6544,58 @@ paths:
           description: "view created successfully"
           schema:
             $ref: "#/definitions/CreateViewResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
       x-rename: "create"
   /v1/orgs/self/ws/{workspace}/views/{view}:
     get:
@@ -6046,6 +6711,58 @@ paths:
           description: "view updated successfully"
           schema:
             $ref: "#/definitions/UpdateViewResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
       x-rename: "update"
     delete:
       tags:
@@ -6074,6 +6791,58 @@ paths:
           description: "view deleted successfully"
           schema:
             $ref: "#/definitions/DeleteViewResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
       x-rename: "delete"
   /v1/public/shared_lambdas/{public_access_id}:
     post:
@@ -6188,6 +6957,10 @@ definitions:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "ISO-8601 date."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this object if one\
+          \ was used."
       creator_email:
         type: "string"
         example: "xyz@rockset.com"
@@ -6229,14 +7002,19 @@ definitions:
         type: "string"
         example: "test@rockset.com"
         description: "Email of API key owner."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this object if one\
+          \ was used."
       expiry_time:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "The expiration date of this API key."
       key:
         type: "string"
-        example: "aB35kDjg*******************************"
-        description: "API key string of 64 alphanumeric characters."
+        example: "aB35kD"
+        description: "This field will only be populated with the full key when creating\
+          \ an API key. Otherwise, it will be an API key identifier of 6 characters."
       last_access_time:
         type: "string"
         example: "2001-08-28T00:23:41Z"
@@ -6265,22 +7043,74 @@ definitions:
       client_timeout_ms:
         type: "integer"
         format: "int64"
-        description: "The maximum amount of time that the client is willing to wait\
-          \ for the query to complete. If the query is not complete by this timeout,\
-          \ a response will be returned with a `query_id` that can be used to check\
-          \ the status of the query and retrieve results once the query has completed."
+        description: "If the query completes before the client timeout, the results\
+          \ are returned. Otherwise if the client timeout is exceeded, the query id\
+          \ will be returned, and the query will continue to run in the background\
+          \ for up to 30 minutes. (The 30 minute timeout can be configured lower with\
+          \ timeout_ms.) `async_options.client_timeout_ms` only applies when `async`\
+          \ is true. The default value of `client_timeout_ms` is 0, so async query\
+          \ requests will immediately return with a query id by default. "
       max_initial_results:
         type: "integer"
         format: "int64"
-        description: "The maximum number of results you will receive as a client.\
-          \ If the query exceeds this limit, the remaining results can be requested\
-          \ using a returned pagination cursor. In addition, there is a maximum response\
-          \ size of 100MiB so fewer than `max_results` may be returned."
+        description: "[DEPRECATED] Use the query request `max_initial_results` instead.\
+          \ The maximum number of results you will receive as a client. If the query\
+          \ exceeds this limit, the remaining results can be requested using a returned\
+          \ pagination cursor. In addition, there is a maximum response size of 100MiB\
+          \ so fewer than `max_results` may be returned."
       timeout_ms:
         type: "integer"
         format: "int64"
-        description: "The maximum amount of time that the system will attempt to complete\
-          \ query execution before aborting the query and returning an error."
+        description: "[DEPRECATED] Use the query request `timeout_ms` instead. The\
+          \ maximum amount of time that the system will attempt to complete query\
+          \ execution before aborting the query and returning an error. This must\
+          \ be set to a value that is greater than or equal to the client timeout,\
+          \ and the maximum value of this timeout is 30 minutes."
+  AutoScalingPolicy:
+    type: "object"
+    properties:
+      enabled:
+        type: "boolean"
+        example: true
+        description: "Whether auto scaling policy is enabled."
+      max_size:
+        type: "string"
+        example: "XLARGE2"
+        description: "Maximum size Rockset can auto scale the Virtual Instance to.\
+          \ This value should be one of the dedicated sizes greater than or same as\
+          \ the min_size and lower than or same as the current size."
+        enum:
+        - "FREE"
+        - "NANO"
+        - "SHARED"
+        - "MILLI"
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+        - "XLARGE"
+        - "XLARGE2"
+        - "XLARGE4"
+        - "XLARGE8"
+        - "XLARGE16"
+      min_size:
+        type: "string"
+        example: "LARGE"
+        description: "Minimum size Rockset can auto scale the Virtual Instance to.\
+          \ This value should be one of the dedicated sizes lower than or same as\
+          \ the max_size and greater than or same as the current size."
+        enum:
+        - "FREE"
+        - "NANO"
+        - "SHARED"
+        - "MILLI"
+        - "SMALL"
+        - "MEDIUM"
+        - "LARGE"
+        - "XLARGE"
+        - "XLARGE2"
+        - "XLARGE4"
+        - "XLARGE8"
+        - "XLARGE16"
   AvroParams:
     type: "object"
   AwsAccessKey:
@@ -6480,6 +7310,10 @@ definitions:
         type: "string"
         example: "hello@rockset.com"
         description: "Email of user who created the collection."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this collection\
+          \ if one was used."
       description:
         type: "string"
         example: "transactions from stores worldwide"
@@ -6579,16 +7413,11 @@ definitions:
         - "EXPIRED"
         - "DELETING"
         - "SWITCHING_REFRESH_TYPE"
+        - "SUSPENDED"
+        - "SUSPENDING"
       stats:
         $ref: "#/definitions/CollectionMountStats"
         description: "Stats about this Collection Mount"
-      type:
-        type: "string"
-        example: "STATIC"
-        description: "Mount type."
-        enum:
-        - "STATIC"
-        - "LIVE"
       virtual_instance_id:
         type: "string"
         example: "5ac23...."
@@ -6748,13 +7577,6 @@ definitions:
         description: "Collections to mount."
         items:
           type: "string"
-      type:
-        type: "string"
-        example: "STATIC"
-        description: "Mount type."
-        enum:
-        - "STATIC"
-        - "LIVE"
   CreateCollectionMountsResponse:
     type: "object"
     properties:
@@ -6802,6 +7624,7 @@ definitions:
           $ref: "#/definitions/Source"
       storage_compression_type:
         type: "string"
+        example: "LZ4"
         description: "RocksDB storage compression type."
         enum:
         - "LZ4"
@@ -6977,12 +7800,18 @@ definitions:
         type: "string"
         example: "VI serving prod traffic"
         description: "Description of requested virtual instance."
+      enable_remount_on_resume:
+        type: "boolean"
+        example: true
+        description: "When a Virtual Instance is resumed, it will remount all collections\
+          \ that were mounted when the Virtual Instance was suspended."
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
         example: 3600
         description: "Number of seconds between data refreshes for mounts on this\
-          \ Virtual Instance"
+          \ Virtual Instance. A value of 0 means continuous refresh and a value of\
+          \ null means never refresh."
       name:
         type: "string"
         example: "prod_vi"
@@ -7136,6 +7965,12 @@ definitions:
       data:
         $ref: "#/definitions/QueryLambda"
         description: "Query Lambda details."
+  DeleteSourceResponse:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/Source"
+        description: "source that was deleted"
   DeleteUserResponse:
     type: "object"
     properties:
@@ -7291,9 +8126,24 @@ definitions:
   ExecuteQueryLambdaRequest:
     type: "object"
     properties:
+      async:
+        type: "boolean"
+        description: "If true, the query will run asynchronously for up to 30 minutes.\
+          \ The query request will immediately return with a query id that can be\
+          \ used to retrieve the query status and results. If false or not specified,\
+          \ the query will return with results once completed or timeout after 2 minutes.\
+          \ (To return results directly for shorter queries while still allowing a\
+          \ timeout of up to 30 minutes, set `async_options.client_timeout_ms`.) "
       async_options:
         $ref: "#/definitions/AsyncQueryOptions"
-        description: "Options for configuring Asynchronous Query Mode (beta)."
+        description: "Options for configuring Asynchronous Query Mode."
+      debug_threshold_ms:
+        type: "integer"
+        format: "int64"
+        description: "If query execution takes longer than this value, debug information\
+          \ will be logged. If the query text includes the DEBUG hint and this parameter\
+          \ is also provided, only this value will be used and the DEBUG hint will\
+          \ be ignored."
       default_row_limit:
         type: "integer"
         format: "int32"
@@ -7304,8 +8154,19 @@ definitions:
       initial_paginate_response_doc_count:
         type: "integer"
         format: "int32"
-        description: "Number of documents to return in addition to paginating for\
-          \ this query call. Only relevant if `paginate` flag is also set."
+        description: "[DEPRECATED] Use `max_initial_results` instead. Number of documents\
+          \ to return in addition to paginating for this query call. Only relevant\
+          \ if `paginate` flag is also set."
+      max_initial_results:
+        type: "integer"
+        format: "int64"
+        description: "This limits the maximum number of results in the initial response.\
+          \ A pagination cursor is returned if the number of results exceeds `max_initial_results`.\
+          \ If `max_initial_results` is not set, all results will be returned in the\
+          \ initial response up to 4 million. If `max_initial_results` is set, the\
+          \ value must be between 0 and 100,000. If the query is async and `client_timeout_ms`\
+          \ is exceeded, `max_initial_results` does not apply since none of the results\
+          \ will be returned with the initial response."
       paginate:
         type: "boolean"
         description: "Flag to paginate and store the results of this query for later\
@@ -7315,6 +8176,13 @@ definitions:
         description: "List of named parameters."
         items:
           $ref: "#/definitions/QueryParameter"
+      timeout_ms:
+        type: "integer"
+        format: "int64"
+        description: "If a query exceeds the specified timeout, the query will automatically\
+          \ stop and return an error. The query timeout defaults to a maximum of 2\
+          \ minutes. If `async` is true, the query timeout defaults to a maximum of\
+          \ 30 minutes."
       virtual_instance_id:
         type: "string"
         description: "Virtual instance on which to run the query."
@@ -7429,6 +8297,12 @@ definitions:
     properties:
       data:
         $ref: "#/definitions/QueryInfo"
+  GetSourceResponse:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/Source"
+        description: "source config for source"
   GetViewResponse:
     type: "object"
     properties:
@@ -7497,6 +8371,10 @@ definitions:
         type: "string"
         example: "hello@rockset.com"
         description: "Email of user who created the integration."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this object if one\
+          \ was used."
       description:
         type: "string"
         example: "AWS account with event data for the data science team."
@@ -7669,6 +8547,14 @@ definitions:
         description: "List of all roles."
         items:
           $ref: "#/definitions/Role"
+  ListSourcesResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        description: "List of all sources in a collection"
+        items:
+          $ref: "#/definitions/Source"
   ListUnsubscribePreferencesResponse:
     type: "object"
     properties:
@@ -7747,6 +8633,14 @@ definitions:
         type: "string"
         example: "<id>"
         description: "Rockset's global AWS user."
+      sso_connection:
+        type: "string"
+        example: "rockset"
+        description: "Connection name of SSO connection."
+      sso_only:
+        type: "boolean"
+        example: true
+        description: "Whether or not SSO is the only permitted form of auth."
     description: "An organization in Rockset is a container for users and collections."
   OrganizationResponse:
     type: "object"
@@ -7907,6 +8801,7 @@ definitions:
         - "DELETE_ROLE_GLOBAL"
         - "LIST_ROLES_GLOBAL"
         - "GRANT_REVOKE_ROLE_GLOBAL"
+        - "CREATE_QUERY_LOGS_COLLECTION_GLOBAL"
         - "ALL_INTEGRATION_ACTIONS"
         - "CREATE_COLLECTION_INTEGRATION"
         - "ALL_WORKSPACE_ACTIONS"
@@ -8002,6 +8897,9 @@ definitions:
         type: "string"
         example: "5b596206-c632-4a08-8343-0c560f7ef7f1"
         description: "Unique Query ID."
+      sql:
+        type: "string"
+        description: "The SQL query for this request"
       stats:
         $ref: "#/definitions/Stats"
         description: "Various stats about the query's execution."
@@ -8118,6 +9016,10 @@ definitions:
         type: "string"
         example: "..@rockset.com"
         description: "User that created this Query Lambda."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this object if one\
+          \ was used."
       description:
         type: "string"
         example: "production version foo"
@@ -8185,7 +9087,7 @@ definitions:
       type:
         type: "string"
         example: "string"
-        description: "Data type of the field."
+        description: "Deprecated. Data type of the field."
       value:
         type: "string"
         example: "85beb391"
@@ -8195,12 +9097,44 @@ definitions:
     required:
     - "sql"
     properties:
+      async:
+        type: "boolean"
+        description: "If true, the query will run asynchronously for up to 30 minutes.\
+          \ The query request will immediately return with a query id that can be\
+          \ used to retrieve the query status and results. If false or not specified,\
+          \ the query will return with results once completed or timeout after 2 minutes.\
+          \ (To return results directly for shorter queries while still allowing a\
+          \ timeout of up to 30 minutes, set `async_options.client_timeout_ms`.) "
       async_options:
         $ref: "#/definitions/AsyncQueryOptions"
-        description: "Options for configuring Asynchronous Query Mode (beta)."
+        description: "Options for configuring Asynchronous Query Mode."
+      debug_threshold_ms:
+        type: "integer"
+        format: "int64"
+        description: "If query execution takes longer than this value, debug information\
+          \ will be logged. If the query text includes the DEBUG hint and this parameter\
+          \ is also provided, only this value will be used and the DEBUG hint will\
+          \ be ignored."
+      max_initial_results:
+        type: "integer"
+        format: "int64"
+        description: "This limits the maximum number of results in the initial response.\
+          \ A pagination cursor is returned if the number of results exceeds `max_initial_results`.\
+          \ If `max_initial_results` is not set, all results will be returned in the\
+          \ initial response up to 4 million. If `max_initial_results` is set, the\
+          \ value must be between 0 and 100,000. If the query is async and `client_timeout_ms`\
+          \ is exceeded, `max_initial_results` does not apply since none of the results\
+          \ will be returned with the initial response."
       sql:
         $ref: "#/definitions/QueryRequestSql"
         description: "Main query request body."
+      timeout_ms:
+        type: "integer"
+        format: "int64"
+        description: "If a query exceeds the specified timeout, the query will automatically\
+          \ stop and return an error. The query timeout defaults to a maximum of 2\
+          \ minutes. If `async` is true, the query timeout defaults to a maximum of\
+          \ 30 minutes."
   QueryRequestSql:
     type: "object"
     required:
@@ -8219,8 +9153,9 @@ definitions:
       initial_paginate_response_doc_count:
         type: "integer"
         format: "int32"
-        description: "Number of documents to return in addition to paginating for\
-          \ this query call. Only relevant if `paginate` flag is also set."
+        description: "[DEPRECATED] Use `max_initial_results` instead. Number of documents\
+          \ to return in addition to paginating for this query call. Only relevant\
+          \ if `paginate` flag is also set."
       parameters:
         type: "array"
         description: "List of named parameters."
@@ -8276,6 +9211,16 @@ definitions:
       stats:
         $ref: "#/definitions/QueryResponseStats"
         description: "Meta information about the query including execution latencies."
+      status:
+        type: "string"
+        example: "RUNNING"
+        description: "Status of query execution. Possible values: `QUEUED`, `RUNNING`,\
+          \ `COMPLETED`, `ERROR`."
+        enum:
+        - "QUEUED"
+        - "RUNNING"
+        - "COMPLETED"
+        - "ERROR"
       warnings:
         type: "array"
         description: "Warnings generated by the query. Only populated if `generate_warnings`\
@@ -8410,6 +9355,7 @@ definitions:
       file_upload:
         $ref: "#/definitions/SourceFileUpload"
         description: "File upload details."
+        readOnly: true
       format_params:
         $ref: "#/definitions/FormatParams"
         description: "Format parameters for data from this source."
@@ -8443,6 +9389,12 @@ definitions:
         $ref: "#/definitions/Status"
         description: "The ingest status of this source."
         readOnly: true
+      suspended_at:
+        type: "string"
+        example: "2019-01-15T21:48:23Z"
+        description: "ISO-8601 date when source was suspended, if suspended"
+      system:
+        $ref: "#/definitions/SourceSystem"
     description: "Details about the data source for the given collection. Only one\
       \ of the following fields are allowed to be defined. Only collections can act\
       \ as data sources for views. "
@@ -8708,6 +9660,17 @@ definitions:
         type: "string"
         example: "us-west-2"
         description: "AWS region containing source bucket."
+  SourceSnapshot:
+    type: "object"
+    properties:
+      source_collection_path:
+        type: "string"
+        example: "commons.foo"
+        description: "Path of source collection to restore the snapshot from."
+      source_snapshot_id:
+        type: "string"
+        description: "Snapshot id of the snapshot that the new collection will be\
+          \ created from."
   SourceSnowflake:
     type: "object"
     required:
@@ -8735,6 +9698,15 @@ definitions:
         type: "string"
         example: "COMPUTE_XL"
         description: "Name of the data warehouse to be used."
+  SourceSystem:
+    type: "object"
+    properties:
+      type:
+        type: "string"
+        example: "QUERY_LOGS"
+        description: "The type of this system source."
+        enum:
+        - "QUERY_LOGS"
   SqlExpression:
     type: "object"
     properties:
@@ -8798,6 +9770,7 @@ definitions:
         - "PROCESSING"
         - "COMPLETED"
         - "ERROR"
+        - "SUSPENDED"
       total_processed_items:
         type: "integer"
         format: "int64"
@@ -9178,6 +10151,10 @@ definitions:
   UpdateVirtualInstanceRequest:
     type: "object"
     properties:
+      auto_scaling_policy:
+        example: "true"
+        $ref: "#/definitions/AutoScalingPolicy"
+        description: "Options for configuring auto scaling policy"
       auto_suspend_enabled:
         type: "boolean"
         example: true
@@ -9191,14 +10168,18 @@ definitions:
         type: "string"
         example: "VI for prod traffic"
         description: "New virtual instance description."
-      monitoring_enabled:
+      enable_remount_on_resume:
         type: "boolean"
+        example: true
+        description: "When a Virtual Instance is resumed, it will remount all collections\
+          \ that were mounted when the Virtual Instance was suspended."
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
         example: 3600
         description: "Number of seconds between data refreshes for mounts on this\
-          \ Virtual Instance"
+          \ Virtual Instance. A value of 0 means continuous refresh and a value of\
+          \ null means never refresh."
       name:
         type: "string"
         example: "prod_vi"
@@ -9282,6 +10263,10 @@ definitions:
         type: "string"
         example: "2001-08-28T00:23:41Z"
         description: "ISO-8601 date."
+      created_by_apikey_name:
+        type: "string"
+        description: "Name of the API key that was used to create this object if one\
+          \ was used."
       creator_email:
         type: "string"
         example: "xyz@rockset.com"
@@ -9333,6 +10318,9 @@ definitions:
     required:
     - "name"
     properties:
+      auto_scaling_policy:
+        $ref: "#/definitions/AutoScalingPolicy"
+        description: "Options for configuring auto scaling policy"
       auto_suspend_seconds:
         type: "integer"
         format: "int32"
@@ -9391,6 +10379,11 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
+      enable_remount_on_resume:
+        type: "boolean"
+        example: true
+        description: "When a Virtual Instance is resumed, it will remount all collections\
+          \ that were mounted when the Virtual Instance was suspended."
       id:
         type: "string"
         example: "123e4567-e89b-12d3-a456-556642440000"
