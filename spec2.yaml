@@ -4843,6 +4843,93 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/offsets/commit:
+    post:
+      tags:
+      - "Collections"
+      summary: "Get Collection Commit"
+      description: "Determines if the collection includes data at or after the specified\
+        \ fence(s) for close read-after-write semantics."
+      operationId: "getCollectionOffsets"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/GetCollectionCommitRequest"
+      responses:
+        200:
+          description: "Successfully returned collection commit"
+          schema:
+            $ref: "#/definitions/GetCollectionCommit"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/sources:
     get:
       tags:
@@ -4923,6 +5010,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+      x-rename: "list"
     post:
       tags:
       - "Sources"
@@ -5264,7 +5352,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-rename: "get"
+      x-rename: "resume"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/sources/{source}/suspend:
     post:
       tags:
@@ -5350,7 +5438,7 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
-      x-rename: "get"
+      x-rename: "suspend"
   /v1/orgs/self/ws/{workspace}/lambdas:
     get:
       tags:
@@ -6944,6 +7032,11 @@ definitions:
         description: "Information about the added documents."
         items:
           $ref: "#/definitions/DocumentStatus"
+      last_offset:
+        type: "string"
+        example: "f1:0:0:0:0"
+        description: "A string representing the collection offset after completing\
+          \ the write."
   Alias:
     type: "object"
     properties:
@@ -7617,6 +7710,10 @@ definitions:
         description: "Number of seconds after which data is purged, based on event\
           \ time."
         minimum: 1
+      source_download_soft_limit_bytes:
+        type: "integer"
+        format: "int64"
+        description: "Soft ingest limit for this collection."
       sources:
         type: "array"
         description: "List of sources from which to ingest data."
@@ -7953,6 +8050,11 @@ definitions:
         description: "Information about deleted documents."
         items:
           $ref: "#/definitions/DocumentStatus"
+      last_offset:
+        type: "string"
+        example: "f1:0:0:0:0"
+        description: "A string representing the collection offset after completing\
+          \ the deletes."
   DeleteIntegrationResponse:
     type: "object"
     properties:
@@ -8280,6 +8382,35 @@ definitions:
       data:
         $ref: "#/definitions/ApiKey"
         description: "The requested API key object."
+  GetCollectionCommit:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/GetCollectionCommitData"
+      offsets:
+        $ref: "#/definitions/Offsets"
+  GetCollectionCommitData:
+    type: "object"
+    properties:
+      fence:
+        type: "string"
+        example: "f1:0:14:9:7093"
+        description: "The max offset passed in the request which is the latest offset\
+          \ that was compared to the commit."
+      passed:
+        type: "boolean"
+        example: true
+        description: "True if all the data in the offsets are available to be queried.\
+          \ False if one or more of the offsets is still behind the request offsets."
+  GetCollectionCommitRequest:
+    type: "object"
+    properties:
+      name:
+        type: "array"
+        example: "[\"f1:0:14:9:7092\",\"f1:0:14:9:7093\"]"
+        description: "a list of zero or more collection offset fences"
+        items:
+          type: "string"
   GetCollectionResponse:
     type: "object"
     properties:
@@ -8604,6 +8735,15 @@ definitions:
         type: "string"
         example: "mongodb+srv://<username>:<password>@server.example.com/"
         description: "MongoDB connection URI string."
+  Offsets:
+    type: "object"
+    properties:
+      commit:
+        type: "string"
+        example: "f1:0:14:9:7093"
+        description: "An encoded value representing the most recent offsets that have\
+          \ been committed. If the fence offset is less than or equal to the commit,\
+          \ then passed is true."
   Organization:
     type: "object"
     properties:
@@ -8734,6 +8874,11 @@ definitions:
         type: "array"
         items:
           $ref: "#/definitions/DocumentStatus"
+      last_offset:
+        type: "string"
+        example: "f1:0:0:0:0"
+        description: "A string representing the collection offset after completing\
+          \ the patch."
   PatchOperation:
     type: "object"
     required:
@@ -8825,6 +8970,8 @@ definitions:
         - "UPDATE_VI"
         - "SUSPEND_RESUME_VI"
         - "DELETE_VI"
+        - "CREATE_SIMILARITY_INDEX_WS"
+        - "DELETE_SIMILARITY_INDEX_WS"
       cluster:
         type: "string"
         example: "*ALL*"
@@ -9348,7 +9495,6 @@ definitions:
         description: "Configuration for ingestion from Azure Event Hubs."
       azure_service_bus:
         $ref: "#/definitions/SourceAzureServiceBus"
-        description: "Configuration for ingestion from Azure Service Bus."
       dynamodb:
         $ref: "#/definitions/SourceDynamoDb"
         description: "Configuration for ingestion from  a dynamodb table."
@@ -9366,6 +9512,10 @@ definitions:
         type: "string"
         example: "a1df483c-734e-485b-8005-f46386ef42f6"
         description: "Unique source identifier."
+        readOnly: true
+      ingest_transformation:
+        $ref: "#/definitions/FieldMappingQuery"
+        description: "Ingest transformation for a source."
       integration_name:
         type: "string"
         example: "aws-integration"
@@ -9393,6 +9543,7 @@ definitions:
         type: "string"
         example: "2019-01-15T21:48:23Z"
         description: "ISO-8601 date when source was suspended, if suspended"
+        readOnly: true
       system:
         $ref: "#/definitions/SourceSystem"
     description: "Details about the data source for the given collection. Only one\
@@ -9618,7 +9769,6 @@ definitions:
     type: "object"
     required:
     - "bucket"
-    - "prefixes"
     properties:
       bucket:
         type: "string"
