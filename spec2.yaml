@@ -74,6 +74,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -142,6 +146,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -214,6 +222,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -282,6 +294,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -359,6 +375,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -431,6 +451,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -507,6 +531,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -577,6 +605,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -644,6 +676,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -718,6 +754,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -795,6 +835,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -868,6 +912,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -938,6 +986,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1031,6 +1083,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1098,6 +1154,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1175,6 +1235,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1247,6 +1311,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1328,6 +1396,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1401,6 +1473,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1469,6 +1545,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1546,6 +1626,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1614,6 +1698,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1691,6 +1779,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1759,6 +1851,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1835,6 +1931,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -1907,6 +2007,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -1989,6 +2093,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2061,6 +2169,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -2138,6 +2250,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -2229,6 +2345,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2317,6 +2437,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2399,6 +2523,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2467,6 +2595,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -2539,6 +2671,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2568,7 +2704,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Create Virtual Instance"
-      description: "[beta] Create virtual instance"
+      description: "Create virtual instance"
       operationId: "createVirtualInstance"
       consumes:
       - "application/json"
@@ -2612,6 +2748,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -2687,6 +2827,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -2769,6 +2913,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2798,7 +2946,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Delete Virtual Instance"
-      description: "[beta] Delete a virtual instance."
+      description: "Delete a virtual instance."
       operationId: "deleteVirtualInstance"
       consumes:
       - "application/json"
@@ -2843,6 +2991,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2873,7 +3025,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "List Collection Mounts"
-      description: "[beta] List collection mounts for a particular VI."
+      description: "List collection mounts for a particular VI."
       operationId: "listCollectionMounts"
       consumes:
       - "application/json"
@@ -2918,6 +3070,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -2946,7 +3102,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Mount Collections"
-      description: "[beta] Mount a collection to this virtual instance."
+      description: "Mount a collection to this virtual instance."
       operationId: "mountCollection"
       consumes:
       - "application/json"
@@ -2997,6 +3153,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3026,7 +3186,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Get Collection Mount"
-      description: "[beta] Retrieve a mount on this virtual instance."
+      description: "Retrieve a mount on this virtual instance."
       operationId: "getCollectionMount"
       consumes:
       - "application/json"
@@ -3075,6 +3235,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3103,7 +3267,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Unmount Collection"
-      description: "[beta] Unmount a collection from this virtual instance."
+      description: "Unmount a collection from this virtual instance."
       operationId: "unmountCollection"
       consumes:
       - "application/json"
@@ -3152,6 +3316,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3181,8 +3349,8 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "List Queries"
-      description: "[beta] Lists actively queued and running queries for a particular\
-        \ Virtual Instance."
+      description: "Lists actively queued and running queries for a particular Virtual\
+        \ Instance."
       operationId: "getVirtualInstanceQueries"
       consumes:
       - "application/json"
@@ -3227,6 +3395,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3255,7 +3427,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Execute SQL Query"
-      description: "[beta] Make a SQL query to Rockset."
+      description: "Make a SQL query to Rockset."
       operationId: "queryVirtualInstance"
       consumes:
       - "application/json"
@@ -3306,6 +3478,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3335,7 +3511,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Resume Virtual Instance"
-      description: "[beta] Resume a virtual instance."
+      description: "Resume a virtual instance."
       operationId: "resumeVirtualInstance"
       consumes:
       - "application/json"
@@ -3380,6 +3556,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3409,7 +3589,7 @@ paths:
       tags:
       - "Virtual Instances"
       summary: "Suspend Virtual Instance"
-      description: "[beta] Suspend a virtual instance."
+      description: "Suspend a virtual instance."
       operationId: "suspendVirtualInstance"
       consumes:
       - "application/json"
@@ -3452,6 +3632,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -3521,6 +3705,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -3596,6 +3784,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -3674,6 +3866,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3747,6 +3943,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -3823,6 +4023,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -3905,6 +4109,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -3984,6 +4192,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -4072,6 +4284,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4152,6 +4368,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4226,6 +4446,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -4308,6 +4532,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4386,6 +4614,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -4474,6 +4706,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4552,6 +4788,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -4906,6 +5146,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -4984,6 +5228,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5072,6 +5320,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5157,6 +5409,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5240,6 +5496,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5328,6 +5588,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5414,6 +5678,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5488,6 +5756,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5570,6 +5842,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5650,6 +5926,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5728,6 +6008,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5816,6 +6100,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -5899,6 +6187,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -5991,6 +6283,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6073,6 +6369,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6160,6 +6460,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6238,6 +6542,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6330,6 +6638,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6413,6 +6725,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6505,6 +6821,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6578,6 +6898,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6660,6 +6984,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6739,6 +7067,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6827,6 +7159,10 @@ paths:
           description: "request timeout"
           schema:
             $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
         415:
           description: "not supported"
           schema:
@@ -6905,6 +7241,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
@@ -6986,6 +7326,10 @@ paths:
             $ref: "#/definitions/ErrorModel"
         408:
           description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
           schema:
             $ref: "#/definitions/ErrorModel"
         415:
