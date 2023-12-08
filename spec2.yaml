@@ -2743,7 +2743,8 @@ paths:
       tags:
       - "Queries"
       summary: "Execute SQL Query"
-      description: "Make a SQL query to Rockset."
+      description: "Make a SQL query to Rockset. If you want to issue the query to\
+        \ a specific Virtual Instance use this https://docs.rockset.com/documentation/reference/queryvirtualinstance"
       operationId: "query"
       consumes:
       - "application/json"
@@ -7081,7 +7082,7 @@ paths:
     post:
       tags:
       - "Virtual Instances"
-      summary: "Execute SQL Query"
+      summary: "Execute SQL Query on a specific Virtual Instance"
       description: "Make a SQL query to Rockset."
       operationId: "queryVirtualInstance"
       consumes:
@@ -7794,6 +7795,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -7813,6 +7815,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -8278,6 +8281,11 @@ definitions:
     properties:
       created_by:
         type: "string"
+      expiry_time:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "If provided, the API key will automatically expire at this time\
+          \ (ISO-8601 format). Requires premium."
       name:
         type: "string"
         example: "my-app"
@@ -8337,8 +8345,10 @@ definitions:
         format: "int64"
         example: 1000000
         description: "Number of seconds after which data is purged, based on event\
-          \ time."
+          \ time. Minimum allowable value is 3600s/1 hour. The maximum value is strictly\
+          \ less than 10 years."
         minimum: 3600
+        maximum: 315359999
       source_download_soft_limit_bytes:
         type: "integer"
         format: "int64"
@@ -8535,10 +8545,20 @@ definitions:
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
-        example: 3600
-        description: "Number of seconds between data refreshes for mounts on this\
-          \ Virtual Instance. A value of 0 means continuous refresh and a value of\
-          \ null means never refresh."
+        example: 0
+        description: "DEPRECATED. Use `mount_type` instead. Number of seconds between\
+          \ data refreshes for mounts on this Virtual Instance. The only valid values\
+          \ are 0 and null. 0 means the data will be refreshed continuously and null\
+          \ means the data will never refresh."
+      mount_type:
+        type: "string"
+        example: "LIVE"
+        description: "The mount type of collections that this Virtual Instance will\
+          \ query. Live mounted collections stay up-to-date with the underlying collection\
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+        enum:
+        - "LIVE"
+        - "STATIC"
       name:
         type: "string"
         example: "prod_vi"
@@ -8553,6 +8573,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -8964,6 +8985,8 @@ definitions:
     properties:
       avro:
         $ref: "#/definitions/AvroParams"
+      bson:
+        type: "boolean"
       csv:
         $ref: "#/definitions/CsvParams"
       json:
@@ -9574,6 +9597,7 @@ definitions:
         - "LIST_ROLES_GLOBAL"
         - "GRANT_REVOKE_ROLE_GLOBAL"
         - "CREATE_QUERY_LOGS_COLLECTION_GLOBAL"
+        - "CREATE_INGEST_LOGS_COLLECTION_GLOBAL"
         - "ALL_INTEGRATION_ACTIONS"
         - "CREATE_COLLECTION_INTEGRATION"
         - "ALL_WORKSPACE_ACTIONS"
@@ -9582,6 +9606,7 @@ definitions:
         - "WRITE_DATA_WS"
         - "CREATE_COLLECTION_WS"
         - "DELETE_COLLECTION_WS"
+        - "UPDATE_COLLECTION_WS"
         - "CREATE_ALIAS_WS"
         - "DELETE_ALIAS_WS"
         - "CREATE_SNAPSHOT_WS"
@@ -9600,6 +9625,9 @@ definitions:
         - "DELETE_VI"
         - "CREATE_SIMILARITY_INDEX_WS"
         - "DELETE_SIMILARITY_INDEX_WS"
+        - "CREATE_NETWORK_CONFIGURATION_GLOBAL"
+        - "DELETE_NETWORK_CONFIGURATION_GLOBAL"
+        - "LIST_NETWORK_CONFIGURATIONS_GLOBAL"
       cluster:
         type: "string"
         example: "*ALL*"
@@ -10158,6 +10186,9 @@ definitions:
       s3:
         $ref: "#/definitions/SourceS3"
         description: "Configuration for ingestion from S3."
+      snapshot:
+        $ref: "#/definitions/SourceSnapshot"
+        description: "Configuration for restoring from snapshot."
       snowflake:
         $ref: "#/definitions/SourceSnowflake"
         description: "Configuration for ingestion from Snowflake."
@@ -10186,12 +10217,14 @@ definitions:
     properties:
       azblob_scan_frequency:
         type: "string"
-        example: "5min"
+        example: "PT5M"
         description: "Rockset scans an Azure blob Storage container based on a defined\
           \ time interval. The scan frequency determines the length of time between\
           \ a new scan and the previous scan. If the previous scan finds new objects\
           \ or updates to existing objects, Rockset immediately scans the bucket again\
-          \ after processing changes from the previous scan."
+          \ after processing changes from the previous scan. Duration value is of\
+          \ type ISO 8601 (e.g. PT5H, PT4M, PT3S). It doesn't account for DST, leap\
+          \ seconds and leap years. Minimum value: PT1S. Maximum value: PT1H."
   SourceAzureBlobStorage:
     type: "object"
     properties:
@@ -10289,6 +10322,9 @@ definitions:
         format: "int64"
         example: 1000
         description: "Max RCU usage for scan."
+      settings:
+        $ref: "#/definitions/SourceDynamoDbSettings"
+        description: "custom settings for Amazon DynamoDB source"
       status:
         $ref: "#/definitions/StatusDynamoDb"
         description: "DynamoDB source status."
@@ -10300,6 +10336,21 @@ definitions:
       use_scan_api:
         type: "boolean"
         description: "Whether to use DynamoDB Scan API for the initial scan."
+  SourceDynamoDbSettings:
+    type: "object"
+    properties:
+      dynamodb_stream_poll_frequency:
+        type: "string"
+        example: "PT1S"
+        description: "Each DynamoDB stream can have one to many shards, and Rockset\
+          \ polls each DynamoDB shard at a fixed rate. Decreasing the duration between\
+          \ polls helps reduce ingest latency, while increasing the duration can prevent\
+          \  Rockset from keeping up with the updates. If the latency exceeds 24 hours\
+          \ (DynamoDB stream retention duration), Rockset will not be able to process\
+          \ all of the streaming updates. Each request also has a fixed price associated\
+          \ with it. Duration value is of type ISO 8601 (e.g. PT5H, PT4M, PT3S). It\
+          \ doesn't account for DST, leap seconds and leap years. Minimum value: PT0.25S.\
+          \ Maximum value: PT5M."
   SourceFileUpload:
     type: "object"
     required:
@@ -10366,15 +10417,21 @@ definitions:
     properties:
       gcs_scan_frequency:
         type: "string"
-        example: "5min"
+        example: "PT5M"
         description: "Rockset scans a GCS bucket based on a defined time interval.\
           \ The scan frequency determines the length of time between a new scan and\
           \ the previous scan. If the previous scan finds new objects or updates to\
           \ existing objects, Rockset immediately scans the bucket again after processing\
-          \ changes from the previous scan."
+          \ changes from the previous scan. Duration value is of type ISO 8601 (e.g.\
+          \ PT5H, PT4M, PT3S). It doesn't account for DST, leap seconds and leap years.\
+          \ Minimum value: PT1S. Maximum value: PT1H."
   SourceKafka:
     type: "object"
     properties:
+      client_id:
+        type: "string"
+        example: "cwc|0013a00001hSJ7oAAG|rockset-colln-consumer"
+        description: "The kafka client id being used."
       consumer_group_id:
         type: "string"
         example: "org-collection"
@@ -10483,7 +10540,8 @@ definitions:
       prefixes:
         type: "array"
         example: "[\"/transactions\", \"/stores\"]"
-        description: "List of prefixes to paths from which data should be ingested."
+        description: "Deprecated in favor of `prefix`. List of prefixes to paths from\
+          \ which data should be ingested."
         readOnly: true
         items:
           type: "string"
@@ -10505,15 +10563,22 @@ definitions:
     properties:
       s3_scan_frequency:
         type: "string"
-        example: "5min"
+        example: "PT5M"
         description: "Rockset scans an S3 bucket based on a defined time interval.\
           \ The scan frequency determines the length of time between a new scan and\
           \ the previous scan. If the previous scan finds new objects or updates to\
           \ existing objects, Rockset immediately scans the bucket again after processing\
-          \ changes from the previous scan."
+          \ changes from the previous scan. Duration value is of type ISO 8601 (e.g.\
+          \ PT5H, PT4M, PT3S). It doesn't account for DST, leap seconds and leap years.\
+          \ Minimum value: PT1S. Maximum value: PT1H."
   SourceSnapshot:
     type: "object"
     properties:
+      source_collection_path:
+        type: "string"
+        example: "myWorkspace.myCollection"
+        description: "A representation of the workspace and collection where the source\
+          \ snapshot originated."
       source_snapshot_rrn:
         type: "string"
         example: "rrn:snap:use1a1:123e4567-e89b-12d3-a456-556642440000"
@@ -10555,6 +10620,13 @@ definitions:
         description: "The type of this system source."
         enum:
         - "QUERY_LOGS"
+        - "INGEST_LOGS"
+      workspace:
+        type: "string"
+        example: "commons"
+        description: "The workspace for which collections will have logs created.\
+          \ If unspecified, logs will be created for collections in all workspaces.\
+          \ Currently only supported for the INGEST_LOGS system source."
   SqlExpression:
     type: "object"
     properties:
@@ -10936,6 +11008,15 @@ definitions:
   UpdateApiKeyRequest:
     type: "object"
     properties:
+      clear_expiry_time:
+        type: "boolean"
+        example: true
+        description: "If set to true, the expiration time for this key will be cleared."
+      expiry_time:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "If provided, the API key will automatically expire at this time\
+          \ (ISO-8601 format). Requires premium."
       state:
         type: "string"
         example: "ACTIVE"
@@ -11089,12 +11170,14 @@ definitions:
       auto_suspend_enabled:
         type: "boolean"
         example: true
-        description: "Whether auto-suspend should be enabled for this Virtual Instance."
+        description: "Whether Query VI auto-suspend should be enabled for this Virtual\
+          \ Instance."
       auto_suspend_seconds:
         type: "integer"
         format: "int32"
         example: 3600
-        description: "Number of seconds without queries after which the VI is suspended"
+        description: "Number of seconds without queries after which the Query VI is\
+          \ suspended"
       description:
         type: "string"
         example: "VI for prod traffic"
@@ -11107,10 +11190,20 @@ definitions:
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
-        example: 3600
-        description: "Number of seconds between data refreshes for mounts on this\
-          \ Virtual Instance. A value of 0 means continuous refresh and a value of\
-          \ null means never refresh."
+        example: 0
+        description: "DEPRECATED. Use `mount_type` instead. Number of seconds between\
+          \ data refreshes for mounts on this Virtual Instance. The only valid values\
+          \ are 0 and null. 0 means the data will be refreshed continuously and null\
+          \ means the data will never refresh."
+      mount_type:
+        type: "string"
+        example: "LIVE"
+        description: "The mount type of collections that this Virtual Instance will\
+          \ query. Live mounted collections stay up-to-date with the underlying collection\
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+        enum:
+        - "LIVE"
+        - "STATIC"
       name:
         type: "string"
         example: "prod_vi"
@@ -11124,6 +11217,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -11275,6 +11369,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -11302,6 +11397,7 @@ definitions:
         - "NANO"
         - "SHARED"
         - "MILLI"
+        - "XSMALL"
         - "SMALL"
         - "MEDIUM"
         - "LARGE"
@@ -11325,8 +11421,17 @@ definitions:
         type: "integer"
         format: "int32"
         example: 3600
-        description: "Number of seconds between data refreshes for mounts on this\
-          \ Virtual Instance"
+        description: "DEPRECATED. Number of seconds between data refreshes for mounts\
+          \ on this Virtual Instance"
+      mount_type:
+        type: "string"
+        example: "LIVE"
+        description: "The mount type of collections that this Virtual Instance will\
+          \ query. Live mounted collections stay up-to-date with the underlying collection\
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+        enum:
+        - "LIVE"
+        - "STATIC"
       name:
         type: "string"
         example: "prod_vi"
