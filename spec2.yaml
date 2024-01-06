@@ -20,6 +20,7 @@ tags:
 - name: "Organizations"
 - name: "Queries"
 - name: "Query Lambdas"
+- name: "Scheduled Lambdas"
 - name: "Shared Lambdas"
 - name: "Sources"
 - name: "Users"
@@ -4360,6 +4361,267 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/ws/{workspace}/scheduled_lambdas:
+    post:
+      tags:
+      - "Scheduled Lambdas"
+      summary: "Create a Scheduled Lambda mapping"
+      description: "Create a scheduled lambda mapping for your organization."
+      operationId: "createScheduledLambda"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "body"
+        name: "body"
+        description: "JSON Object"
+        required: true
+        schema:
+          $ref: "#/definitions/CreateScheduledLambdaRequest"
+      responses:
+        200:
+          description: "scheduled lambda mapping created successfully"
+          schema:
+            $ref: "#/definitions/ScheduledLambdaResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "create"
+  /v1/orgs/self/ws/{workspace}/scheduled_lambdas/{scheduledLambdaId}:
+    post:
+      tags:
+      - "Scheduled Lambdas"
+      summary: "Update a Scheduled Lambda mapping"
+      description: "Update a scheduled lambda mapping for your organization."
+      operationId: "updateScheduledLambda"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "scheduledLambdaId"
+        description: "Scheduled Lambda RRN"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON Object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateScheduledLambdaRequest"
+      responses:
+        200:
+          description: "scheduled lambda mapping updated successfully"
+          schema:
+            $ref: "#/definitions/ScheduledLambdaResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "update"
+    delete:
+      tags:
+      - "Scheduled Lambdas"
+      summary: "Delete a Scheduled Lambda mapping"
+      description: "Delete a scheduled lambda mapping for your organization."
+      operationId: "deleteScheduledLambda"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "scheduledLambdaId"
+        description: "Scheduled Lambda RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "scheduled lambda mapping deleted successfully"
+          schema:
+            $ref: "#/definitions/ScheduledLambdaResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "delete"
   /v1/public/shared_lambdas/{public_access_id}:
     post:
       tags:
@@ -8469,6 +8731,53 @@ definitions:
         type: "string"
         example: "read_write"
         description: "Unique identifier for the role."
+  CreateScheduledLambdaRequest:
+    type: "object"
+    required:
+    - "cron_string"
+    - "ql_name"
+    properties:
+      apikey:
+        type: "string"
+        example: "qoiwkjndksd"
+        description: "The apikey to use when triggering execution of the associated\
+          \ query lambda."
+      cron_string:
+        type: "string"
+        example: "* * * * *"
+        description: "The UNIX-formatted cron string for this scheduled query lambda."
+      ql_name:
+        type: "string"
+        example: "ql_name"
+        description: "The name of the QL to use for scheduled execution."
+      tag:
+        type: "string"
+        example: "production"
+        description: "The QL tag to use for scheduled execution."
+      total_times_to_execute:
+        type: "integer"
+        format: "int64"
+        example: 1
+        description: "The number of times to execute this scheduled query lambda.\
+          \ Once this scheduled query lambda has been executed this many times, it\
+          \ will no longer be executed."
+      version:
+        type: "string"
+        example: "abcdef1234"
+        description: "The version of the QL to use for scheduled execution."
+      webhook_auth_header:
+        type: "string"
+        example: "bearer qiowjkjkdskdskldio"
+        description: "The value to use as the authorization header when hitting the\
+          \ webhook."
+      webhook_payload:
+        type: "string"
+        description: "The payload that should be sent to the webhook. JSON format."
+      webhook_url:
+        type: "string"
+        example: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+        description: "The URL of the webhook that should be triggered after this scheduled\
+          \ query lambda completes."
   CreateUserRequest:
     type: "object"
     required:
@@ -8824,9 +9133,9 @@ definitions:
         - "NOTIMPLEMENTEDYET"
         - "RESOURCEEXCEEDED"
         - "ALREADYEXISTS"
-        - "NOTALLOWED"
+        - "METHODNOTALLOWED"
         - "NOTACCEPTABLE"
-        - "NOTSUPPORTED"
+        - "UNSUPPORTEDMEDIATYPE"
         - "NOTFOUND"
         - "DEPENDENTRESOURCES"
         - "QUERY_ERROR"
@@ -8933,6 +9242,19 @@ definitions:
       virtual_instance_id:
         type: "string"
         description: "Virtual instance on which to run the query."
+  ExecutionStatus:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+        description: "Message describing the execution status."
+      state:
+        type: "string"
+        example: "ERROR"
+        description: "The scheduled query lambda execution status"
+        enum:
+        - "WARNING"
+        - "ERROR"
   FieldMappingQuery:
     type: "object"
     properties:
@@ -9589,6 +9911,7 @@ definitions:
         - "CREATE_INTEGRATION_GLOBAL"
         - "DELETE_INTEGRATION_GLOBAL"
         - "LIST_INTEGRATIONS_GLOBAL"
+        - "EXPORT_DATA_GLOBAL"
         - "UPDATE_RESOURCE_OWNER_GLOBAL"
         - "CREATE_API_KEY_GLOBAL"
         - "CREATE_ROLE_GLOBAL"
@@ -9628,6 +9951,7 @@ definitions:
         - "CREATE_NETWORK_CONFIGURATION_GLOBAL"
         - "DELETE_NETWORK_CONFIGURATION_GLOBAL"
         - "LIST_NETWORK_CONFIGURATIONS_GLOBAL"
+        - "UPDATE_ORG_QUERY_ROUTING"
       cluster:
         type: "string"
         example: "*ALL*"
@@ -10084,6 +10408,89 @@ definitions:
       aws_role:
         $ref: "#/definitions/AwsRole"
         description: "Details of an AWS cross-account role integration."
+  ScheduledLambda:
+    type: "object"
+    properties:
+      cron_string:
+        type: "string"
+        example: "* * * * *"
+        description: "The UNIX-formatted cron string for this scheduled query lambda."
+      execution_count:
+        type: "integer"
+        format: "int64"
+        example: 5
+        description: "The number of times this scheduled QL has been executed."
+      last_completion_date:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "The last time this scheduled query lambda completed successfully."
+      last_query_id:
+        type: "string"
+        example: "salkdjfsd-1jakdsjfksaj"
+        description: "The ID of the query that was triggered by this scheduled lambda's\
+          \ last run."
+      next_execution_date:
+        type: "string"
+        example: "2001-08-28T00:23:41Z"
+        description: "The next time this scheduled query lambda will be executed."
+      ql_name:
+        type: "string"
+        example: "example_ql"
+        description: "The name of the associated query lambda."
+      query_execution_status:
+        $ref: "#/definitions/ExecutionStatus"
+        description: "Query execution status of the scheduled lambda. This field will\
+          \ only be populated when the query execution encounters a warning or error\
+          \ state."
+      resume_permanent_error:
+        type: "boolean"
+        description: "Boolean flag to allow a scheduled query lambda to resume execution\
+          \ after being suspended due to execution failure. This flag will be unset\
+          \ after scheduled lambda execution."
+      rrn:
+        type: "string"
+        example: "rrn:sl:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "Scheduled Lambda mapping RRN."
+      tag:
+        type: "string"
+        example: "production"
+        description: "The query lambda tag."
+      total_times_to_execute:
+        type: "integer"
+        format: "int64"
+        example: 5
+        description: "The number of times to execute this scheduled query lambda.\
+          \ Once this scheduled query lambda has been executed this many times, it\
+          \ will no longer be executed."
+      version:
+        type: "string"
+        example: "abcde1234"
+        description: "The version of the associated query lambda."
+      vi_rrn:
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        $ref: "#/definitions/VirtualInstanceRrn"
+        description: "The RRN of the virtual instance that should be used to execute\
+          \ this scheduled query lambda."
+      webhook_payload:
+        type: "string"
+        example: "{\"text\": \"A scheduled query lambda completed execution. Query\
+          \ ID: {{QUERY_ID}}, Initial results: {{QUERY_RESULTS}}\""
+        description: "The payload that should be sent to the webhook."
+      webhook_url:
+        type: "string"
+        example: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+        description: "The URL of the webhook that should be triggered after this scheduled\
+          \ query lambda completes."
+      workspace:
+        type: "string"
+        example: "commons"
+        description: "Workspace of the associated query lambda."
+  ScheduledLambdaResponse:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/ScheduledLambda"
+        description: "Scheduled lambda mapping"
   SchemaRegistryConfig:
     type: "object"
     properties:
@@ -10296,7 +10703,7 @@ definitions:
         $ref: "#/definitions/SourceAzBlobStorageBase"
         description: "Configuration for ingestion from Azure Blob Storage."
       dynamodb:
-        $ref: "#/definitions/SourceDynamoDb"
+        $ref: "#/definitions/SourceDynamoDbBase"
         description: "Configuration for ingestion from a DynamoDb table."
       gcs:
         $ref: "#/definitions/SourceGcsBase"
@@ -10336,6 +10743,12 @@ definitions:
       use_scan_api:
         type: "boolean"
         description: "Whether to use DynamoDB Scan API for the initial scan."
+  SourceDynamoDbBase:
+    type: "object"
+    properties:
+      settings:
+        $ref: "#/definitions/SourceDynamoDbSettings"
+        description: "custom settings for Amazon DynamoDB source"
   SourceDynamoDbSettings:
     type: "object"
     properties:
@@ -11108,6 +11521,37 @@ definitions:
         description: "List of privileges that will be associated with the role."
         items:
           $ref: "#/definitions/Privilege"
+  UpdateScheduledLambdaRequest:
+    type: "object"
+    properties:
+      apikey:
+        type: "string"
+        example: "qoiwkjndksd"
+        description: "The apikey to use when triggering execution of the associated\
+          \ query lambda."
+      resume_permanent_error:
+        type: "boolean"
+        description: "Boolean flag to allow a scheduled query lambda to resume execution\
+          \ after being suspended due to execution failure. This flag will be unset\
+          \ after scheduled lambda execution."
+      total_times_to_execute:
+        type: "integer"
+        format: "int64"
+        example: 1
+        description: "The number of times to execute this scheduled query lambda."
+      webhook_auth_header:
+        type: "string"
+        example: "bearer qiowjkjkdskdskldio"
+        description: "The value to use as the authorization header when hitting the\
+          \ webhook."
+      webhook_payload:
+        type: "string"
+        description: "The payload that should be sent to the webhook. JSON format."
+      webhook_url:
+        type: "string"
+        example: "https://hooks.slack.com/services/T00000000/B00000000/XXXXXXXXXXXXXXXXXXXXXXXX"
+        description: "The URL of the webhook that should be triggered after this scheduled\
+          \ query lambda completes."
   UpdateUnsubscribePreferencesRequest:
     type: "object"
     properties:
@@ -11465,6 +11909,65 @@ definitions:
       stats:
         $ref: "#/definitions/VirtualInstanceStats"
         description: "Stats about this VirtualInstance"
+  VirtualInstanceRrn:
+    type: "object"
+    properties:
+      cluster:
+        type: "string"
+        enum:
+        - "APT2A1"
+        - "DEV"
+        - "DEV_USW2A1"
+        - "EUC1A1"
+        - "EUW1A1"
+        - "GLOBAL"
+        - "TEST"
+        - "UNIT_TEST"
+        - "UNKNOWN"
+        - "USE1A1"
+        - "USW2A1"
+      resourceType:
+        type: "string"
+        enum:
+        - "ALIAS"
+        - "CLUSTER"
+        - "COLLECTION"
+        - "COLLECTION_STATS"
+        - "COMPACTION_INFO"
+        - "DEPLOYMENT_STATS"
+        - "FIELD_SCHEMA"
+        - "INTEGRATION"
+        - "IP_ALLOWLIST"
+        - "LEAF"
+        - "LEAF_GROUP"
+        - "MOUNT"
+        - "NETWORK_CONFIGURATION"
+        - "ORG"
+        - "ORG_MIGRATION"
+        - "PENDING_SNAPSHOTS"
+        - "PREVIEW_SOURCE"
+        - "QUERY_LAMBDA"
+        - "QUERY_LAMBDA_TAG"
+        - "QUERY_LAMBDA_VERSION"
+        - "ROCKSET_DEPLOYMENT"
+        - "ROLE"
+        - "ROOT"
+        - "SCHEDULED_QUERY_LAMBDA"
+        - "SHARD"
+        - "SHARD_BATCH"
+        - "SIMILARITY_INDEX"
+        - "SNAPSHOT"
+        - "SOURCE"
+        - "USER"
+        - "VIEW"
+        - "VIRTUAL_INSTANCE"
+        - "WORKSPACE"
+      uuid:
+        type: "string"
+        format: "uuid"
+      version:
+        type: "integer"
+        format: "int32"
   VirtualInstanceStats:
     type: "object"
     properties:
