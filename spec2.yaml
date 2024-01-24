@@ -17,6 +17,7 @@ tags:
 - name: "Custom Roles"
 - name: "Documents"
 - name: "Integrations"
+- name: "Organization Settings"
 - name: "Organizations"
 - name: "Queries"
 - name: "Query Lambdas"
@@ -10605,6 +10606,8 @@ definitions:
         readOnly: true
       system:
         $ref: "#/definitions/SourceSystem"
+      write_api:
+        $ref: "#/definitions/SourceWriteApi"
     description: "Details about the data source for the given collection. Only one\
       \ of the following fields are allowed to be defined. Only collections can act\
       \ as data sources for views. "
@@ -11035,6 +11038,8 @@ definitions:
         description: "The workspace for which collections will have logs created.\
           \ If unspecified, logs will be created for collections in all workspaces.\
           \ Currently only supported for the INGEST_LOGS system source."
+  SourceWriteApi:
+    type: "object"
   SqlExpression:
     type: "object"
     properties:
