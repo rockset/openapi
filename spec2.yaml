@@ -8659,6 +8659,9 @@ definitions:
       gcs:
         $ref: "#/definitions/GcsIntegration"
         description: "GCS details."
+      is_write_enabled:
+        type: "boolean"
+        description: "is write access enabled for this integration."
       kafka:
         $ref: "#/definitions/KafkaIntegration"
       kinesis:
@@ -9487,6 +9490,9 @@ definitions:
       gcs:
         $ref: "#/definitions/GcsIntegration"
         description: "GCS details."
+      is_write_enabled:
+        type: "boolean"
+        description: "is write access enabled for this integration"
       kafka:
         $ref: "#/definitions/KafkaIntegration"
         description: "Kafka details."
@@ -11068,6 +11074,12 @@ definitions:
         example: 1235
         description: "Number of documents returned by the query. Only populated if\
           \ `status` is `COMPLETE`."
+      result_set_file_count:
+        type: "integer"
+        format: "int64"
+        example: 1235
+        description: "Number of files written by by the query. Only populated if `status`\
+          \ is `COMPLETE` and the query is an export query."
       throttled_time_ms:
         type: "integer"
         format: "int64"
@@ -11477,6 +11489,9 @@ definitions:
       gcs:
         $ref: "#/definitions/GcsIntegration"
         description: "GCS details."
+      is_write_enabled:
+        type: "boolean"
+        description: "is write access enabled for this integration."
       kafka:
         $ref: "#/definitions/KafkaIntegration"
       kinesis:
