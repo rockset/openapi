@@ -15,9 +15,9 @@ tags:
 - name: "API Keys"
 - name: "Collections"
 - name: "Custom Roles"
+- name: "Deployment Settings"
 - name: "Documents"
 - name: "Integrations"
-- name: "Organization Settings"
 - name: "Organizations"
 - name: "Queries"
 - name: "Query Lambdas"
@@ -8855,6 +8855,14 @@ definitions:
         example: true
         description: "When a Virtual Instance is resumed, it will remount all collections\
           \ that were mounted when the Virtual Instance was suspended."
+      instance_class:
+        type: "string"
+        example: "MO_IL"
+        description: "Virtual Instance Class. Use `MO_IL` for Memory Optimized and\
+          \ `GP_IL` for General Purpose instance class."
+        enum:
+        - "MO_IL"
+        - "GP_IL"
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
@@ -9958,7 +9966,7 @@ definitions:
         - "CREATE_NETWORK_CONFIGURATION_GLOBAL"
         - "DELETE_NETWORK_CONFIGURATION_GLOBAL"
         - "LIST_NETWORK_CONFIGURATIONS_GLOBAL"
-        - "UPDATE_ORG_QUERY_ROUTING"
+        - "UPDATE_DEPLOYMENT_DEFAULT_QUERY_VI"
       cluster:
         type: "string"
         example: "*ALL*"
@@ -11646,6 +11654,14 @@ definitions:
         example: true
         description: "When a Virtual Instance is resumed, it will remount all collections\
           \ that were mounted when the Virtual Instance was suspended."
+      instance_class:
+        type: "string"
+        example: "MO_IL"
+        description: "Virtual Instance Class. Use `MO_IL` for Memory Optimized and\
+          \ `GP_IL` for General Purpose instance class."
+        enum:
+        - "MO_IL"
+        - "GP_IL"
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
@@ -11818,6 +11834,15 @@ definitions:
         type: "string"
         example: "hello@rockset.com"
         description: "Creator of requested virtual instance."
+      current_instance_class:
+        type: "string"
+        example: "MO_IL"
+        description: "Virtual Instance Class. `MO_IL` represents Memory Optimized\
+          \ and `GP_IL` represents General Purpose instance class."
+        enum:
+        - "MO_BR"
+        - "MO_IL"
+        - "GP_IL"
       current_size:
         type: "string"
         example: "MEDIUM"
@@ -11846,6 +11871,14 @@ definitions:
         type: "string"
         example: "VI for prod traffic"
         description: "Virtual instance description."
+      desired_instance_class:
+        type: "string"
+        example: "MO_IL"
+        description: "Virtual Instance Class."
+        enum:
+        - "MO_BR"
+        - "MO_IL"
+        - "GP_IL"
       desired_size:
         type: "string"
         example: "MEDIUM"
