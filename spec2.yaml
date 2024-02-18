@@ -1938,6 +1938,158 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
       x-rename: "delete"
+  /v1/orgs/self/deploymentsettings:
+    get:
+      tags:
+      - "Deployment Settings"
+      summary: "Retrieve Deployment Settings"
+      description: "Retrieve settings for the current deployment."
+      operationId: "getDeploymentSettings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Deployment settings retrieved successfully"
+          schema:
+            $ref: "#/definitions/DeploymentSettingsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    put:
+      tags:
+      - "Deployment Settings"
+      summary: "Update Deployment Settings"
+      description: "Update settings for the current deployment."
+      operationId: "updateDeploymentSettings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateDeploymentSettingsRequest"
+      responses:
+        202:
+          description: "Deployment settings updated successfully. Settings may take\
+            \ up to 1 minute to take effect"
+          schema:
+            $ref: "#/definitions/DeploymentSettingsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/docs:
     post:
       tags:
@@ -9069,6 +9221,20 @@ definitions:
       data:
         $ref: "#/definitions/Workspace"
         description: "The workspace that was deleted."
+  DeploymentSettings:
+    type: "object"
+    properties:
+      default_query_vi:
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        $ref: "#/definitions/VirtualInstanceRrn"
+        description: "RRN of the Virtual Instance that all queries will be routed\
+          \ to by default"
+  DeploymentSettingsResponse:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/DeploymentSettings"
+        description: "Deployment settings"
   DocumentStatus:
     type: "object"
     properties:
@@ -11474,6 +11640,14 @@ definitions:
         $ref: "#/definitions/FieldMappingQuery"
         description: "Updated ingest transformation query. Note that updating the\
           \ transformation will lead to a brief interruption in ingestion."
+  UpdateDeploymentSettingsRequest:
+    type: "object"
+    properties:
+      default_query_vi:
+        type: "string"
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "RRN of the Virtual Instance that all queries will be routed\
+          \ to by default"
   UpdateIntegrationRequest:
     type: "object"
     properties:
@@ -11957,6 +12131,64 @@ definitions:
       stats:
         $ref: "#/definitions/VirtualInstanceStats"
         description: "Stats about this VirtualInstance"
+  VirtualInstanceRrn:
+    type: "object"
+    properties:
+      cluster:
+        type: "string"
+        enum:
+        - "APT2A1"
+        - "DEV"
+        - "DEV_USW2A1"
+        - "EUC1A1"
+        - "EUW1A1"
+        - "GLOBAL"
+        - "TEST"
+        - "UNKNOWN"
+        - "USE1A1"
+        - "USW2A1"
+      resourceType:
+        type: "string"
+        enum:
+        - "ALIAS"
+        - "CLUSTER"
+        - "COLLECTION"
+        - "COLLECTION_STATS"
+        - "COMPACTION_INFO"
+        - "DEPLOYMENT_STATS"
+        - "FIELD_SCHEMA"
+        - "INTEGRATION"
+        - "IP_ALLOWLIST"
+        - "LEAF"
+        - "LEAF_GROUP"
+        - "MOUNT"
+        - "NETWORK_CONFIGURATION"
+        - "ORG"
+        - "PENDING_SNAPSHOTS"
+        - "PREVIEW_SOURCE"
+        - "QUERY_LAMBDA"
+        - "QUERY_LAMBDA_TAG"
+        - "QUERY_LAMBDA_VERSION"
+        - "ROCKSET_DEPLOYMENT"
+        - "ROLE"
+        - "ROOT"
+        - "SCHEDULED_QUERY_LAMBDA"
+        - "SHARD"
+        - "SHARD_BATCH"
+        - "SIMILARITY_INDEX"
+        - "SNAPSHOT"
+        - "SOURCE"
+        - "SOURCE_STATE"
+        - "USER"
+        - "VIEW"
+        - "VIRTUAL_INSTANCE"
+        - "WORKSPACE"
+      uuid:
+        type: "string"
+        format: "uuid"
+      version:
+        type: "integer"
+        format: "int32"
   VirtualInstanceStats:
     type: "object"
     properties:
