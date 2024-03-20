@@ -1938,6 +1938,158 @@ paths:
           schema:
             $ref: "#/definitions/ErrorModel"
       x-rename: "delete"
+  /v1/orgs/self/deploymentsettings:
+    get:
+      tags:
+      - "Deployment Settings"
+      summary: "Retrieve Deployment Settings"
+      description: "Retrieve settings for the current deployment."
+      operationId: "getDeploymentSettings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "Deployment settings retrieved successfully"
+          schema:
+            $ref: "#/definitions/DeploymentSettingsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+    put:
+      tags:
+      - "Deployment Settings"
+      summary: "Update Deployment Settings"
+      description: "Update settings for the current deployment."
+      operationId: "updateDeploymentSettings"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/UpdateDeploymentSettingsRequest"
+      responses:
+        202:
+          description: "Deployment settings updated successfully. Settings may take\
+            \ up to 1 minute to take effect"
+          schema:
+            $ref: "#/definitions/DeploymentSettingsResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
   /v1/orgs/self/ws/{workspace}/collections/{collection}/docs:
     post:
       tags:
@@ -4449,6 +4601,90 @@ paths:
             $ref: "#/definitions/ErrorModel"
       x-rename: "create"
   /v1/orgs/self/ws/{workspace}/scheduled_lambdas/{scheduledLambdaId}:
+    get:
+      tags:
+      - "Scheduled Lambdas"
+      summary: "Retrieve a Scheduled Lambda mapping"
+      description: "Retrieve a scheduled lambda mapping for your organization."
+      operationId: "getScheduledLambda"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "scheduledLambdaId"
+        description: "Scheduled Lambda RRN"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "scheduled lambda mapping retrieved successfully"
+          schema:
+            $ref: "#/definitions/ScheduledLambdaResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "get"
     post:
       tags:
       - "Scheduled Lambdas"
@@ -8738,6 +8974,7 @@ definitions:
   CreateScheduledLambdaRequest:
     type: "object"
     required:
+    - "apikey"
     - "cron_string"
     - "ql_name"
     properties:
@@ -8757,7 +8994,8 @@ definitions:
       tag:
         type: "string"
         example: "production"
-        description: "The QL tag to use for scheduled execution."
+        description: "The QL tag to use for scheduled execution. One of either the\
+          \ QL tag or version must be specified"
       total_times_to_execute:
         type: "integer"
         format: "int64"
@@ -8768,7 +9006,8 @@ definitions:
       version:
         type: "string"
         example: "abcdef1234"
-        description: "The version of the QL to use for scheduled execution."
+        description: "The version of the QL to use for scheduled execution. One of\
+          \ either the QL version or tag must be specified."
       webhook_auth_header:
         type: "string"
         example: "bearer qiowjkjkdskdskldio"
@@ -8876,7 +9115,7 @@ definitions:
         example: "LIVE"
         description: "The mount type of collections that this Virtual Instance will\
           \ query. Live mounted collections stay up-to-date with the underlying collection\
-          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/using-virtual-instances#virtual-instance-configuration"
         enum:
         - "LIVE"
         - "STATIC"
@@ -9069,6 +9308,20 @@ definitions:
       data:
         $ref: "#/definitions/Workspace"
         description: "The workspace that was deleted."
+  DeploymentSettings:
+    type: "object"
+    properties:
+      default_query_vi:
+        type: "string"
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "RRN of the Virtual Instance that all queries will be routed\
+          \ to by default"
+  DeploymentSettingsResponse:
+    type: "object"
+    properties:
+      data:
+        $ref: "#/definitions/DeploymentSettings"
+        description: "Deployment settings"
   DocumentStatus:
     type: "object"
     properties:
@@ -9163,6 +9416,11 @@ definitions:
         - "RATELIMITEXCEEDED"
         - "QUERY_CANCELLED"
         - "CLIENT_CONNECTION_ERROR"
+      virtual_instance_rrn:
+        type: "string"
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "Virtual Instance RRN for the Virtual Instance that the query\
+          \ was run on (if applicable)."
     description: "Describes details about an error"
   EventTimeInfo:
     type: "object"
@@ -10013,6 +10271,10 @@ definitions:
   QueryInfo:
     type: "object"
     properties:
+      destination_uri:
+        type: "string"
+        description: "destination for query results. Only populated for Insert INTO\
+          \ s3 queries."
       executed_by:
         type: "string"
         example: "xyz@rockset.com"
@@ -10481,6 +10743,11 @@ definitions:
         type: "string"
         example: "abcde1234"
         description: "The version of the associated query lambda."
+      webhook_execution_status:
+        $ref: "#/definitions/ExecutionStatus"
+        description: "Webhook execution status of the scheduled lambda. This field\
+          \ will only be populated when the webhook execution encounters a warning\
+          \ or error state."
       webhook_payload:
         type: "string"
         example: "{\"text\": \"A scheduled query lambda completed execution. Query\
@@ -11474,6 +11741,14 @@ definitions:
         $ref: "#/definitions/FieldMappingQuery"
         description: "Updated ingest transformation query. Note that updating the\
           \ transformation will lead to a brief interruption in ingestion."
+  UpdateDeploymentSettingsRequest:
+    type: "object"
+    properties:
+      default_query_vi:
+        type: "string"
+        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
+        description: "RRN of the Virtual Instance that all queries will be routed\
+          \ to by default"
   UpdateIntegrationRequest:
     type: "object"
     properties:
@@ -11675,7 +11950,7 @@ definitions:
         example: "LIVE"
         description: "The mount type of collections that this Virtual Instance will\
           \ query. Live mounted collections stay up-to-date with the underlying collection\
-          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/using-virtual-instances#virtual-instance-configuration"
         enum:
         - "LIVE"
         - "STATIC"
@@ -11862,9 +12137,6 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
-      default_pod_count:
-        type: "integer"
-        format: "int32"
       default_vi:
         type: "boolean"
       description:
@@ -11920,7 +12192,7 @@ definitions:
         example: "LIVE"
         description: "The mount type of collections that this Virtual Instance will\
           \ query. Live mounted collections stay up-to-date with the underlying collection\
-          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/virtual-instances#virtual-instance-configuration"
+          \ in real-time. Static mounted collections do not stay up-to-date. See https://docs.rockset.com/documentation/docs/using-virtual-instances#virtual-instance-configuration"
         enum:
         - "LIVE"
         - "STATIC"
@@ -11936,9 +12208,6 @@ definitions:
         type: "string"
         example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
         description: "Virtual Instance RRN."
-      scaled_pod_count:
-        type: "integer"
-        format: "int32"
       state:
         type: "string"
         example: "ACTIVE"
