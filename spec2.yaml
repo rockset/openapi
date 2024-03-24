@@ -4601,90 +4601,6 @@ paths:
             $ref: "#/definitions/ErrorModel"
       x-rename: "create"
   /v1/orgs/self/ws/{workspace}/scheduled_lambdas/{scheduledLambdaId}:
-    get:
-      tags:
-      - "Scheduled Lambdas"
-      summary: "Retrieve a Scheduled Lambda mapping"
-      description: "Retrieve a scheduled lambda mapping for your organization."
-      operationId: "getScheduledLambda"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "path"
-        name: "workspace"
-        description: "name of the workspace"
-        required: true
-        type: "string"
-        default: "commons"
-      - in: "path"
-        name: "scheduledLambdaId"
-        description: "Scheduled Lambda RRN"
-        required: true
-        type: "string"
-      responses:
-        200:
-          description: "scheduled lambda mapping retrieved successfully"
-          schema:
-            $ref: "#/definitions/ScheduledLambdaResponse"
-        400:
-          description: "bad request"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        401:
-          description: "unauthorized"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        403:
-          description: "forbidden"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        404:
-          description: "not found"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        405:
-          description: "not allowed"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        406:
-          description: "not acceptable"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        408:
-          description: "request timeout"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        409:
-          description: "conflict"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        415:
-          description: "not supported"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        429:
-          description: "resource exceeded"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        500:
-          description: "internal error"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        501:
-          description: "not implemented"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        502:
-          description: "bad gateway"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-        503:
-          description: "not ready"
-          schema:
-            $ref: "#/definitions/ErrorModel"
-      x-rename: "get"
     post:
       tags:
       - "Scheduled Lambdas"
@@ -8974,7 +8890,6 @@ definitions:
   CreateScheduledLambdaRequest:
     type: "object"
     required:
-    - "apikey"
     - "cron_string"
     - "ql_name"
     properties:
@@ -8994,8 +8909,7 @@ definitions:
       tag:
         type: "string"
         example: "production"
-        description: "The QL tag to use for scheduled execution. One of either the\
-          \ QL tag or version must be specified"
+        description: "The QL tag to use for scheduled execution."
       total_times_to_execute:
         type: "integer"
         format: "int64"
@@ -9006,8 +8920,7 @@ definitions:
       version:
         type: "string"
         example: "abcdef1234"
-        description: "The version of the QL to use for scheduled execution. One of\
-          \ either the QL version or tag must be specified."
+        description: "The version of the QL to use for scheduled execution."
       webhook_auth_header:
         type: "string"
         example: "bearer qiowjkjkdskdskldio"
@@ -9416,11 +9329,6 @@ definitions:
         - "RATELIMITEXCEEDED"
         - "QUERY_CANCELLED"
         - "CLIENT_CONNECTION_ERROR"
-      virtual_instance_rrn:
-        type: "string"
-        example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
-        description: "Virtual Instance RRN for the Virtual Instance that the query\
-          \ was run on (if applicable)."
     description: "Describes details about an error"
   EventTimeInfo:
     type: "object"
@@ -12137,6 +12045,9 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
+      default_pod_count:
+        type: "integer"
+        format: "int32"
       default_vi:
         type: "boolean"
       description:
@@ -12208,6 +12119,9 @@ definitions:
         type: "string"
         example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
         description: "Virtual Instance RRN."
+      scaled_pod_count:
+        type: "integer"
+        format: "int32"
       state:
         type: "string"
         example: "ACTIVE"
