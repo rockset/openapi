@@ -9093,7 +9093,8 @@ definitions:
         type: "boolean"
         example: true
         description: "When a Virtual Instance is resumed, it will remount all collections\
-          \ that were mounted when the Virtual Instance was suspended."
+          \ that were mounted when the Virtual Instance was suspended. Defaults to\
+          \ true."
       instance_class:
         type: "string"
         example: "MO_IL"
@@ -9968,6 +9969,23 @@ definitions:
         description: "List of workspaces."
         items:
           $ref: "#/definitions/Workspace"
+  MicrobatchPolicy:
+    type: "object"
+    properties:
+      enabled:
+        type: "boolean"
+        example: true
+        description: "Whether batch mode policy is enabled."
+      enabled_timestamp:
+        type: "integer"
+        format: "int64"
+        description: "Timestamp (in millis since epoch) when microbatching was enabled"
+        readOnly: true
+      resume_interval:
+        type: "string"
+        example: "PT2H30M5S"
+        description: "ISO-8601 Duration representing the time the VI should remain\
+          \ suspended for before resuming ingest"
   MongoDbIntegration:
     type: "object"
     required:
@@ -11937,6 +11955,9 @@ definitions:
         enum:
         - "MO_IL"
         - "GP_IL"
+      microbatch_policy:
+        $ref: "#/definitions/MicrobatchPolicy"
+        description: "Options for configuring Ingest VI microbatch policy"
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
