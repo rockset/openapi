@@ -1547,6 +1547,97 @@ paths:
           description: "not ready"
           schema:
             $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/ws/{workspace}/collections/{collection}/state:
+    put:
+      tags:
+      - "Collections"
+      summary: "Set Collection State"
+      description: "Set state of a collection."
+      operationId: "setCollectionState"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "path"
+        name: "workspace"
+        description: "name of the workspace"
+        required: true
+        type: "string"
+        default: "commons"
+      - in: "path"
+        name: "collection"
+        description: "name of the collection"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "JSON object"
+        required: true
+        schema:
+          $ref: "#/definitions/SetCollectionStateRequest"
+      responses:
+        200:
+          description: "collection state updated successfully"
+          schema:
+            $ref: "#/definitions/GetCollectionResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+      x-rename: "setstate"
   /v1/orgs/self/roles:
     get:
       tags:
@@ -4458,6 +4549,79 @@ paths:
           description: "Query Lambda executed successfully"
           schema:
             $ref: "#/definitions/QueryResponse"
+        400:
+          description: "bad request"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        401:
+          description: "unauthorized"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        403:
+          description: "forbidden"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        404:
+          description: "not found"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        405:
+          description: "not allowed"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        406:
+          description: "not acceptable"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        408:
+          description: "request timeout"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        409:
+          description: "conflict"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        415:
+          description: "not supported"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        429:
+          description: "resource exceeded"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        500:
+          description: "internal error"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        501:
+          description: "not implemented"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        502:
+          description: "bad gateway"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+        503:
+          description: "not ready"
+          schema:
+            $ref: "#/definitions/ErrorModel"
+  /v1/orgs/self/lambdas/scheduled_lambdas:
+    get:
+      tags:
+      - "Scheduled Lambdas"
+      summary: "List Scheduled Lambdas"
+      description: "List all Scheduled Lambdas in an organization."
+      operationId: "listOrgScheduledLambdas"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "scheduled lambdas listed successfully"
+          schema:
+            $ref: "#/definitions/ListScheduledLambdasResponse"
         400:
           description: "bad request"
           schema:
@@ -8690,7 +8854,7 @@ definitions:
         type: "integer"
         format: "int64"
         example: 123456
-        description: "Total collection column index size in bytes."
+        description: "DEPRECATED: Total collection column index size in bytes."
       doc_count:
         type: "integer"
         format: "int64"
@@ -8706,7 +8870,7 @@ definitions:
         type: "integer"
         format: "int64"
         example: 123456
-        description: "Total collection inverted index size in bytes."
+        description: "DEPRECATED: Total collection inverted index size in bytes."
       last_queried_ms:
         type: "integer"
         format: "int64"
@@ -8731,12 +8895,12 @@ definitions:
         type: "integer"
         format: "int64"
         example: 123456
-        description: "Total collection range index size in bytes."
+        description: "DEPRECATED: Total collection range index size in bytes."
       row_index_size:
         type: "integer"
         format: "int64"
         example: 123456
-        description: "Total collection row index size in bytes."
+        description: "DEPRECATED: Total collection row index size in bytes."
       total_index_size:
         type: "integer"
         format: "int64"
@@ -9093,7 +9257,8 @@ definitions:
         type: "boolean"
         example: true
         description: "When a Virtual Instance is resumed, it will remount all collections\
-          \ that were mounted when the Virtual Instance was suspended."
+          \ that were mounted when the Virtual Instance was suspended. Defaults to\
+          \ true."
       instance_class:
         type: "string"
         example: "MO_IL"
@@ -9920,6 +10085,14 @@ definitions:
         description: "List of all roles."
         items:
           $ref: "#/definitions/Role"
+  ListScheduledLambdasResponse:
+    type: "object"
+    properties:
+      data:
+        type: "array"
+        description: "list of all Scheduled Lambdas"
+        items:
+          $ref: "#/definitions/ScheduledLambda"
   ListSourcesResponse:
     type: "object"
     properties:
@@ -9968,6 +10141,23 @@ definitions:
         description: "List of workspaces."
         items:
           $ref: "#/definitions/Workspace"
+  MicrobatchPolicy:
+    type: "object"
+    properties:
+      enabled:
+        type: "boolean"
+        example: true
+        description: "Whether batch mode policy is enabled."
+      enabled_timestamp:
+        type: "integer"
+        format: "int64"
+        description: "Timestamp (in millis since epoch) when microbatching was enabled"
+        readOnly: true
+      resume_interval:
+        type: "string"
+        example: "PT2H30M5S"
+        description: "ISO-8601 Duration representing the time the VI should remain\
+          \ suspended for before resuming ingest"
   MongoDbIntegration:
     type: "object"
     required:
@@ -10780,6 +10970,16 @@ definitions:
       url:
         type: "string"
         description: "Schema registry URL."
+  SetCollectionStateRequest:
+    type: "object"
+    properties:
+      state:
+        type: "string"
+        example: "READY"
+        description: "state to set for the collection"
+        enum:
+        - "READY"
+        - "PAUSED"
   SnowflakeIntegration:
     type: "object"
     required:
@@ -11902,6 +12102,36 @@ definitions:
       data:
         $ref: "#/definitions/View"
         description: "View that was updated."
+  UpdateVirtualInstanceClassSettingsRequest:
+    type: "object"
+    properties:
+      large:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to LARGE"
+      medium:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to MEDIUM"
+      small:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to SMALL"
+      xlarge:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XLARGE"
+      xlarge16:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XLARGE16"
+      xlarge2:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XLARGE2"
+      xlarge4:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XLARGE4"
+      xlarge8:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XLARGE8"
+      xsmall:
+        $ref: "#/definitions/UpdateVirtualInstanceSizeSettingsRequest"
+        description: "The settings for this Virtual Instance when it is set to XSMALL"
   UpdateVirtualInstanceRequest:
     type: "object"
     properties:
@@ -11937,6 +12167,9 @@ definitions:
         enum:
         - "MO_IL"
         - "GP_IL"
+      microbatch_policy:
+        $ref: "#/definitions/MicrobatchPolicy"
+        description: "Options for configuring Ingest VI microbatch policy"
       mount_refresh_interval_seconds:
         type: "integer"
         format: "int32"
@@ -11976,12 +12209,35 @@ definitions:
         - "XLARGE4"
         - "XLARGE8"
         - "XLARGE16"
+      settings:
+        $ref: "#/definitions/UpdateVirtualInstanceSettingsRequest"
+        description: "Various settings attached to this Virtual Instance."
   UpdateVirtualInstanceResponse:
     type: "object"
     properties:
       data:
         $ref: "#/definitions/VirtualInstance"
         description: "Virtual instance that was switched."
+  UpdateVirtualInstanceSettingsRequest:
+    type: "object"
+    properties:
+      gp_il:
+        $ref: "#/definitions/UpdateVirtualInstanceClassSettingsRequest"
+        description: "The settings for this Virtual Instance when it's class is GP.IL"
+      mo_br:
+        $ref: "#/definitions/UpdateVirtualInstanceClassSettingsRequest"
+        description: "The settings for this Virtual Instance when it's class is MO.BR"
+      mo_il:
+        $ref: "#/definitions/UpdateVirtualInstanceClassSettingsRequest"
+        description: "The settings for this Virtual Instance when it's class is MO.IL"
+  UpdateVirtualInstanceSizeSettingsRequest:
+    type: "object"
+    properties:
+      cqel:
+        type: "integer"
+        format: "int32"
+        example: 10
+        description: "The CQEL for this Virtual Instance"
   User:
     type: "object"
     required:
@@ -12208,6 +12464,9 @@ definitions:
         type: "string"
         example: "rrn:vi:use1a1:123e4567-e89b-12d3-a456-556642440000"
         description: "Virtual Instance RRN."
+      settings:
+        $ref: "#/definitions/VirtualInstanceSettings"
+        description: "Various settings attached to this Virtual Instance."
       state:
         type: "string"
         example: "ACTIVE"
@@ -12226,6 +12485,68 @@ definitions:
       stats:
         $ref: "#/definitions/VirtualInstanceStats"
         description: "Stats about this VirtualInstance"
+  VirtualInstanceClassSettings:
+    type: "object"
+    properties:
+      free:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to FREE"
+      large:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to LARGE"
+      medium:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to MEDIUM"
+      milli:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to MILLI"
+      nano:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to NANO"
+      shared:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to SHARED"
+      small:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to SMALL"
+      xlarge:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XLARGE"
+      xlarge16:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XLARGE16"
+      xlarge2:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XLARGE2"
+      xlarge4:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XLARGE4"
+      xlarge8:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XLARGE8"
+      xsmall:
+        $ref: "#/definitions/VirtualInstanceSizeSettings"
+        description: "The settings for this Virtual Instance when it is set to XSMALL"
+  VirtualInstanceSettings:
+    type: "object"
+    properties:
+      gp_il:
+        $ref: "#/definitions/VirtualInstanceClassSettings"
+        description: "The settings for this Virtual Instance when it's class is GP.IL"
+      mo_br:
+        $ref: "#/definitions/VirtualInstanceClassSettings"
+        description: "The settings for this Virtual Instance when it's class is MO.BR"
+      mo_il:
+        $ref: "#/definitions/VirtualInstanceClassSettings"
+        description: "The settings for this Virtual Instance when it's class is MO.IL"
+  VirtualInstanceSizeSettings:
+    type: "object"
+    properties:
+      cqel:
+        type: "integer"
+        format: "int32"
+        example: 10
+        description: "The CQEL for this Virtual Instance"
   VirtualInstanceStats:
     type: "object"
     properties:
